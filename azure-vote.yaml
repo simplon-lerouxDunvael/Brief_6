@@ -7,16 +7,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: az-redis
+      app: redis-azure
   template:
     metadata:
       labels:
-        app: az-redis
+        app: redis-azure
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: az-redis
+      - name: redis
         image: redis:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
@@ -30,7 +30,7 @@ spec:
             memory: 256Mi
         ports:
         - containerPort: 6379
-          name: az-redis
+          name: redis
 ---
 # Service for Redis
 apiVersion: v1
@@ -38,10 +38,11 @@ kind: Service
 metadata:
   name: az-redis
 spec: # Par default le type est ClusterIP, il n'y a aucun raison de le spécifier (type: ClusterIP)
+  tupe: LoadBalancer
   ports:
   - port: 6379
   selector:
-    app: az-redis
+    app: redis-azure
 ---
 # Deployment of Voting App
 apiVersion: apps/v1
@@ -74,7 +75,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "az-redis"
+          value: "redis"
         - name: STRESS_SECS
           value: "2"
 ---
