@@ -1,0 +1,119 @@
+# Plan d'action présentation  
+
+# Plan d'action
+
+00. **Scrum quotidien**
+Scrum Master = Moi (brief individuel)
+Compte-rendu quotidien immédiat et désignation des premières tâches du jour.
+Réunions hebdomadaires avec les autres membres de la formations afin de déterminer les difficultés, facilités et avancées de chacun.
+
+1.  **Lecture des documentations Kubernetes et AKS**
+
+2.  **Topologie de l'infrastructure**
+Infrastructure Plannifiée
+
+
+```mermaid
+flowchart TD 
+
+user(Utilisateurs)
+admin(Administrateurs)
+
+    subgraph Web [Internet]
+    vide( )
+    void( )
+    end  
+
+    subgraph AZ [Azure]
+        subgraph BDD [Stockage]
+        apa(Apache)
+        bdd(MariaDB)
+        end
+
+    vmadmin(VM Admin)
+    proxy(Bastion)
+    appGW(Load Balancer)
+
+        subgraph VM [Scaling - Gitea]
+        vm1(VM)
+        vm2(VM)
+        vm3(VM)
+        vm4(VM)
+        vm5(VM)
+        vm6(VM)
+        vm7(VM)
+        vm8(VM)
+        end
+
+    end 
+
+user --- vide --> appGW --> VM
+admin --- |SSH| void --> |SSH| proxy --> |SSH| vmadmin --> |SSH| BDD
+vmadmin --> |SSH| VM
+VM <--> BDD
+
+    classDef rouge fill:#faa,stroke:#f66,stroke-width:4px,color:#fff,stroke-dasharray: 5 5;
+    class VM, rouge;
+    classDef sec fill:#aff,stroke:#025,stroke-width:2px,color:#003;
+    class AZ, sec;
+    classDef ter fill:#f0f,stroke:#025,stroke-width:2px,color:#003;
+    class BDD,vmadmin, ter;
+    classDef vert fill:#af0,stroke:#025,stroke-width:2px,color:#003;
+    class proxy,appGW,Serv, vert;
+    classDef blanc fill:#fff,stroke:#025,stroke-width:2px,color:#003;
+    class Web, blanc;
+
+```
+04. **Liste ressources Azure**
+
+
+-----------
+| ressource | VM (application) | VM (Admin) |  MariaDB | Bastion |
+| :--------: | :--------: | :--------: | :--------: | :--------: |
+| Azure service | ✓ | ✓ | ✗ | ✓ |
+| ressource groupe | ✓ |✓ | ✓ | ✓ |
+| Vnet    | 10.0.0.0/21 | 10.0.0.0/21 | 10.0.0.0/21 | 10.0.4.0/23 |
+| Subnet | 10.0.6.0/24 | 10.0.5.0/24 | ... | 10.0.4.0/24 |
+| IP Public | Dyn | No | No | Dyn |
+| SSH (port) | 22 | 22 | 22 | 22 |
+| Disque | HDD - 4Gb | HDD - 4Gb | SSD - 4Gb | N/A |
+| Ubuntu | 18.04-LTS à maj en 22.04 LTS | 18.04-LTS à maj en 22.04 LTS  | N/A | N/A |
+
+
+Ressource vm:
+
+- Disque : hdd
+- RAM: 4Gb
+- Coeur: 1
+- OS : Ubuntu
+
+Ressource MariaDB:
+
+- Disque: SSD
+- RAM: 4Gb
+- Coeur: 1
+
+Ressources : 
+- trois ip publiques
+- un FQDN
+- TLS
+- Test de montée en charge
+- Terraform
+- Bastion
+
+05.   **Liste tâches à faire sur le [Board](https://github.com/users/Simplon-Luna/projects/1/views/1)**
+Création et gestion des tâches dans l'ordre du plan d'action. Attribution des tâches aux membres du groupe au fur et à mesure.
+
+06.  **Installation de Kubernetes**
+
+07.  **Déploiement d’une infrastructure minimale**
+
+08.  **Déploiement  BDD** (Mariadb)
+
+09.   **Déploiement d’un espace de stockage** (SMB)
+
+10.  **Déploiement d’un load balancer**
+
+11.  **Script**
+
+12.  **Executive summary + fonctionnement de Kubernetes**
