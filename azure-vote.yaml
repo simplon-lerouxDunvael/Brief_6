@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: redis
+      - name: az-redis
         image: redis:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
@@ -30,7 +30,7 @@ spec:
             memory: 256Mi
         ports:
         - containerPort: 6379
-          name: redis
+          name: az-redis
 ---
 # Service for Redis
 apiVersion: v1
@@ -74,7 +74,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "redis"
+          value: "az-redis"
         - name: STRESS_SECS
           value: "2"
 ---
