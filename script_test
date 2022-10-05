@@ -41,3 +41,6 @@ kubectl logs mypod --all-containers
 
 # Accéder aux logs d'un container
 kubectl logs mypod -c mycontainer
+
+# Accéder aux événements
+kubectl get events
