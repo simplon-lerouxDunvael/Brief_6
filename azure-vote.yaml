@@ -38,7 +38,6 @@ kind: Service
 metadata:
   name: az-redis
 spec: # Par default le type est ClusterIP, il n'y a aucun raison de le spécifier (type: ClusterIP)
-  type: LoadBalancer
   ports:
   - port: 6379
   selector:
@@ -75,7 +74,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "20.27.40.174"
+          value: "az-redis"
         - name: STRESS_SECS
           value: "2"
 ---
