@@ -1,5 +1,15 @@
 # Création du groupe de ressources Azure
+az group create --name b6duna --location japaneast
 
-# Création du Cluser AKS
+# Création du Cluster AKS
+az aks create -g b6duna -n AKSClusterd --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
 
-#
+# Connexion au Cluster :
+az aks get-credentials --resource-group b6duna --name AKSClusterd
+
+*Result *Merged "AKSClusterd" as current context in /home/dunvael/.kube/config*
+
+# Check nodes and states
+kubectl get nodes
+
+# 
