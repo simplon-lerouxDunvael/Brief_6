@@ -35,7 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-service
-spec:
+spec: # Par default le type est ClusterIP, il n'y a aucun raison de le spécifier (type: ClusterIP)
   ports:
   - port: 6379
   selector:
