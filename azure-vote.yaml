@@ -54,7 +54,6 @@ spec:
     metadata:
       labels:
         app: votingapp-azure
-      STRESS_SECS: 2
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
