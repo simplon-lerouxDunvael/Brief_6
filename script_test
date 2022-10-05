@@ -9,15 +9,6 @@ az aks get-credentials --resource-group b6duna --name AKSClusterd
 
 *Result *Merged "AKSClusterd" as current context in /home/dunvael/.kube/config*
 
-# Vérifier les pods créés et leur statut
-kubectl get nodes
-
-# Récupérer les pods avec leur id et leur statut (running...)
-kubectl describe pods "podid"
-
-# Supprimer un pod
-kubectl delete pods "podid"
-
 # Déployer l'application à l'aide du fichier yaml
 kubectl apply -f azure-vote.yaml (nom du fichier yaml)
 
@@ -26,6 +17,15 @@ kubectl get service vote-service --watch
 
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
+
+# Vérifier les pods créés et leur statut
+kubectl get nodes
+
+# Récupérer les pods avec leur id et leur statut (running...)
+kubectl describe pods "podid"
+
+# Supprimer un pod
+kubectl delete pods "podid"
 
 # Récupérer les pods avec leur id et leur statut
 kubectl describe pods podid
