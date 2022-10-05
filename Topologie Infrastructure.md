@@ -4,36 +4,42 @@ Infrastructure Plannifiée
 ```mermaid
 flowchart TD 
 
-user(Utilisateurs)
-admin(Administrateurs)
+yml(YAML file)
+appGW(Load Balancer)
 
-    subgraph AZ [Azure]
+    subgraph AZ [AZURE]
         subgraph BDD [Stockage Redis]
             Stock(PVC)
         end
     
     subgraph Cluster [Cluster Kubernetes]
-        KT-temp1(Voting App)
-        KT-temp2(Redis)
+        KT-temp1(Voting App Container)
+        KT-temp2(Redis Container)
+        tag1(Tag V.app)
+        tag2(Tag Redis)
         end
 
-    appGW(Load Balancer)
 
-appGW -.-> KT-temp2
-KT-temp2 -.-> Stock
-user -.->  KT-temp1
+appGW --> KT-temp2
+KT-temp2 --> Stock
+KT-temp2 -.-> tag2
+KT-temp1 -.-> tag1
+yml -.-> tag2
+yml -.-> tag1
 
     end
 
-    classDef rouge fill:#faa,stroke:#f66,stroke-width:4px,color:#fff,stroke-dasharray: 5 5;
-    class VM, rouge;
-    classDef sec fill:#aff,stroke:#025,stroke-width:2px,color:#003;
-    class AZ, sec;
-    classDef ter fill:#f0f,stroke:#025,stroke-width:2px,color:#003;
-    class BDD,vmadmin, ter;
-    classDef vert fill:#af0,stroke:#025,stroke-width:2px,color:#003;
-    class proxy,appGW,Serv, vert;
-    classDef blanc fill:#fff,stroke:#025,stroke-width:2px,color:#003;
-    class Web, blanc;
+    classDef rouge fill:#faa,stroke:#f66,stroke-width:4px,color:#fff;
+    class Cluster, rouge;
+    classDef bleu fill:#aff,stroke:#025,stroke-width:2px,color:#003;
+    class AZ, bleu;
+    classDef rose fill:#f0f,stroke:#025,stroke-width:2px,color:#003;
+    class BDD, rose;
+    classDef vert fill:#ae0,stroke:#025,stroke-width:2px,color:#003;
+    class appGW, vert;
+    classDef blanc fill:#faf,stroke:#025,stroke-width:2px,color:#003;
+    class Stock, blanc;
+    classDef jaune fill:#fe5,stroke:#025,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
+    class yml,tag1,tag2, jaune;
 
 ```
