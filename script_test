@@ -28,13 +28,16 @@ kubectl get service vote-service --watch
 az group delete --name b6duna --yes --no-wait
 
 # Récupérer les pods avec leur id et leur statut
-kubectl describe pods "podid"
+kubectl describe pods podid
 
 # Récupérer le déploiement
 kubectl get deployment
 
+# Vérifier le statut du déploiement
+kubectl describe deployment mydeployment
+
 # Supprimer le déploiement
-kubectl delete deployment "nomdecequel'onadéployé"
+kubectl delete deployment nomdudéploiement
 
 # Accéder aux logs de tous les containers
 kubectl logs mypod --all-containers
