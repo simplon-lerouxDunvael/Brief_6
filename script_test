@@ -17,3 +17,6 @@ kubectl apply -f azure-vote.yaml (nom du fichier yaml)
 
 # Vérifier quel est le type de networking du service
 kubectl get service vote-service --watch
+
+# Supprimer le Cluster
+az group delete --name b6duna --yes --no-wait
