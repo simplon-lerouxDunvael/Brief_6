@@ -36,6 +36,7 @@ kind: Service
 metadata:
   name: redis-service
 spec:
+  type: ClusterIP
   ports:
   - port: 6379
   selector:
