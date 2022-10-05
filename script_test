@@ -12,4 +12,5 @@ az aks get-credentials --resource-group b6duna --name AKSClusterd
 # Check nodes and states
 kubectl get nodes
 
-# 
+# Déployer l'application à l'aide du fichier yaml
+kubectl apply -f azure-vote.yaml
