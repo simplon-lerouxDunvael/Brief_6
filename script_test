@@ -29,3 +29,6 @@ az group delete --name b6duna --yes --no-wait
 
 # Récupérer les pods avec leur id et leur statut
 kubectl describe pods "podid"
+
+# Supprimer le déploiement
+kubectl delete deployment "nomdecequel'onadéployé"
