@@ -18,9 +18,15 @@ spec:
       containers:
       - name: redis
         image: redis:latest
+        args: ["--requirepass", "$(REDIS_PASS)"]
         env:
         - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
+          value: "no"
+        - name: REDIS_PASS
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: REDIS_PASS
         resources:
           requests:
             cpu: 100m
