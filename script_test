@@ -15,8 +15,22 @@ kubectl apply -f azure-vote.yaml (nom du fichier yaml)
 # Vérifier quel est le type de networking du service
 kubectl get service vote-service --watch
 
+# Créer un secret pour le mot de passe Redis avec un username
+kubectl create secret generic db-user-pass from-literal=username=userduna
+kubectl create secret generic db-user-pass from-literal=password=redis_password_915
+
+# Créer un enregistrement DNS
+k8s-redis.twixlmedia.com A 104.40.246.55
+
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
+
+
+
+
+
+
+
 
 # Vérifier les pods créés et leur statut
 kubectl get nodes
