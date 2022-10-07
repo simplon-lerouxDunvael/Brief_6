@@ -10,19 +10,19 @@ az aks get-credentials --resource-group b6duna --name AKSClusterd
 *Result *Merged "AKSClusterd" as current context in /home/dunvael/.kube/config*
 
 # Déployer l'application à l'aide du fichier yaml
-kubectl apply -f azure-vote.yaml (nom du fichier yaml)
+kubectl apply -f azure-vote.yaml # (nom du fichier yaml)
 
 # Vérifier quel est le type de networking du service
 kubectl get service vote-service --watch
+
+# Créer un enregistrement DNS
+k8s-redis.twixlmedia.com A 104.40.246.55
 
 # Créer un secret pour le mot de passe Redis avec un username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
 
 # Vérifier si le secret a bien été créé
 kubectl describe secret nomdusecret
-
-# Créer un enregistrement DNS
-k8s-redis.twixlmedia.com A 104.40.246.55
 
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
