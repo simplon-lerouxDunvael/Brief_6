@@ -1,12 +1,34 @@
-## Plan d'action Brief 6 - Part 1
+## Plan d'action Brief 6 - Part 1  
+
+<div id='top'/>  
+
+## Sommaire
+### [0 - Scrum quotidien](#Scrum)
+### [1 - Lecture des documentations Kubernetes et AKS](#Documentations)
+### [2 - Topologie de l'infrastructure](#Topologie)
+### [3 - Liste ressources Azure](#Ressources)
+### [4 - Déploiement d'un cluster AKS avec deux nodes](#Cluster)
+### [5 - Déploiement de Redis](#Redis)
+
+[&#8679;](#top)   
+
+<div id='Scrum'/>   
 
 00. **Scrum quotidien**
 Scrum Master = Moi (brief individuel)
 Compte-rendu quotidien immédiat et désignation des premières tâches du jour.
-Réunions hebdomadaires avec les autres membres de la formations afin de déterminer les difficultés, facilités et avancées de chacun.
+Réunions hebdomadaires avec les autres membres de la formations afin de déterminer les difficultés, facilités et avancées de chacun.  
+
+[&#8679;](#top)  
+
+<div id='Documentations'/>  
 
 01.  **Lecture des documentations Kubernetes et AKS**
 Lecture des documentations afin de déterminer les fonctionnements, prérequis et outils/logiciels nécessaires pour remplir les différentes tâches du Brief 6.
+
+[&#8679;](#top)  
+
+<div id='Topologie'/>  
 
 02.  **Topologie de l'infrastructure**
 Infrastructure Plannifiée
@@ -53,6 +75,11 @@ yml -.-> tag1
     class yml,tag1,tag2, jaune;
 
 ```
+
+[&#8679;](#top)  
+
+<div id='Ressources'/>  
+
 03. **Liste ressources Azure**
 
 -----------
@@ -75,22 +102,64 @@ yml -.-> tag1
 | Persistent Vol. CLaim (3Gi)| ✗ | ✓ | ✓ |
 | DNS |   | ✓ | ✓ |
 
+[&#8679;](#top)  
+
+<div id='Cluster'/>   
+
 04.   **Déploiement d'un cluster AKS avec deux nodes**
+
+[&#8679;](#top)  
+
+<div id='Redis'/>  
 
 05.   **Déploiement de Redis**
 
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
+
 06.   **Déploiement de Voting App**
 
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
+
 07.   **Déploiement d’un Load Balancer**
+
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
    
 08.   **Application d'un ClusterIP pour Redis**
 
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
+
 09.   **Configuration d'un mot de passe pour le container Redis**
+
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
 
 10.   **Création d'un secret Kubenetes**
 
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
+
 11.   **Création d'un compte de stockage**
+
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
 
 12.   **Configuration d'un Persistent Volume Claim avec StorageClass**
 
+[&#8679;](#top)  
+
+<div id='Terraform'/>  
+
 13.  **Executive summary + fonctionnement de Kubernetes**
+
+[&#8679;](#top)
