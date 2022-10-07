@@ -98,32 +98,54 @@ spec:
   - port: 80
   selector:
     app: votingapp-azure
-
-# Storage Volume creation
-apiVersion: v1
-kind: PersistentVolume
+---
+# Storage class 
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: redis-pv-volume
-  labels:
-    type: azurefile_csi
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: "/mnt/data"
-
+  name: redis-sc
+provisioner: file.csi.azure.com
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0640
+  - file_mode=0640
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict # https://linux.die.net/man/8/mount.cifs
+  - nosharesock
+parameters:
+  skuName: Standard_LRS
+---
 # Claim creation
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: redis-pv-claim
+  name: redis-pvc
 spec:
-  storageClassName: manual
+  storageClassName: azurefile_csi
+  volumename : azurefile
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 3Gi
+
+
+#### Storage Volume creation
+#### apiVersion: v1
+#### kind: PersistentVolume
+#### metadata:
+####   name: redis-pv-volume
+####   labels:
+####     type: azurefile_csi
+#### spec:
+####   storageClassName: manual
+####   capacity:
+####     storage: 10Gi
+####   accessModes:
+####     - ReadWriteMany
+####  hostPath:
+####     path: "/mnt/data"
