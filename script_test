@@ -16,7 +16,10 @@ kubectl apply -f azure-vote.yaml (nom du fichier yaml)
 kubectl get service vote-service --watch
 
 # Créer un secret pour le mot de passe Redis avec un username
-kubectl create secret generic db-user-pass --from-literal=username=userduna --from-literal=password=redis_password_915
+kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
+
+# Vérifier si le secret a bien été créé
+kubectl describe secret nomdusecret
 
 # Créer un enregistrement DNS
 k8s-redis.twixlmedia.com A 104.40.246.55
