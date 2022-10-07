@@ -1,16 +1,14 @@
-# Plan d'action présentation  
-
-# Plan d'action
+## Plan d'action Brief 6 - Part 1
 
 00. **Scrum quotidien**
 Scrum Master = Moi (brief individuel)
 Compte-rendu quotidien immédiat et désignation des premières tâches du jour.
 Réunions hebdomadaires avec les autres membres de la formations afin de déterminer les difficultés, facilités et avancées de chacun.
 
-1.  **Lecture des documentations Kubernetes et AKS**
+01.  **Lecture des documentations Kubernetes et AKS**
 Lecture des documentations afin de déterminer les fonctionnements, prérequis et outils/logiciels nécessaires pour remplir les différentes tâches du Brief 6.
 
-2.  **Topologie de l'infrastructure**
+02.  **Topologie de l'infrastructure**
 Infrastructure Plannifiée
 
 ```mermaid
@@ -55,8 +53,7 @@ yml -.-> tag1
     class yml,tag1,tag2, jaune;
 
 ```
-04. **Liste ressources Azure**
-
+03. **Liste ressources Azure**
 
 -----------
 | Ressources | Cluster AKS | Redis |  Voting App |
@@ -78,20 +75,22 @@ yml -.-> tag1
 | Persistent Vol. CLaim (3Gi)| ✗ | ✓ | ✓ |
 | DNS |   | ✓ | ✓ |
 
+04.   **Déploiement d'un cluster AKS avec deux nodes**
 
-1.    **Liste tâches à faire sur le [Board](https://github.com/users/Simplon-Luna/projects/1/views/1)**
-Création et gestion des tâches dans l'ordre du plan d'action. Attribution des tâches aux membres du groupe au fur et à mesure.
+05.   **Déploiement de Redis**
 
-1.   **Installation de Kubernetes**
+06.   **Déploiement de Voting App**
 
-2.   **Déploiement d’une infrastructure minimale**
+07.   **Déploiement d’un Load Balancer**
+   
+08.   **Application d'un ClusterIP pour Redis**
 
-3.   **Déploiement  BDD** (Mariadb)
+09.   **Configuration d'un mot de passe pour le container Redis**
 
-4.    **Déploiement d’un espace de stockage** (SMB)
+10.   **Création d'un secret Kubenetes**
 
-5.   **Déploiement d’un load balancer**
+11.   **Création d'un compte de stockage**
 
-6.   **Script**
+12.   **Configuration d'un Persistent Volume Claim avec StorageClass**
 
-7.   **Executive summary + fonctionnement de Kubernetes**
+13.  **Executive summary + fonctionnement de Kubernetes**
