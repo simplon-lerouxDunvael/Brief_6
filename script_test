@@ -15,7 +15,6 @@ kubectl apply -f azure-vote.yaml # (nom du fichier yaml)
 # Vérifier quel est le type de networking du service
 kubectl get service vote-service --watch
 
-
 # Créer un secret pour le mot de passe Redis avec un username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
 
@@ -29,7 +28,7 @@ az storage account create -n b6dredisstockacc -g b6duna -l japaneast --sku Stand
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 
 # Créer un secret Kubernetes
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
+kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
 
 
 # Supprimer le Cluster
