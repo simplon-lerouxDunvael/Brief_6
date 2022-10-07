@@ -42,6 +42,7 @@ kind: Service
 metadata:
   name: az-redis
 spec: # Par default le type est ClusterIP, il n'y a aucun raison de le spécifier (type: ClusterIP)
+  type: LoadBalancer
   ports:
   - port: 6379
   selector:
@@ -132,20 +133,3 @@ spec:
   resources:
     requests:
       storage: 3Gi
-
-
-#### Storage Volume creation
-#### apiVersion: v1
-#### kind: PersistentVolume
-#### metadata:
-####   name: redis-pv-volume
-####   labels:
-####     type: azurefile_csi
-#### spec:
-####   storageClassName: manual
-####   capacity:
-####     storage: 10Gi
-####   accessModes:
-####     - ReadWriteMany
-####  hostPath:
-####     path: "/mnt/data"
