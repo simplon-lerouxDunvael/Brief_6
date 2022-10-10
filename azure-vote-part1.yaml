@@ -40,7 +40,7 @@ spec:
         - containerPort: 6379
           name: redis
         volumeMounts:
-        - name: diskredis
+        - name: redis-pvshare
           mountPath: /data
 
 ---
