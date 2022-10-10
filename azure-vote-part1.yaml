@@ -105,6 +105,22 @@ spec:
   - port: 80
   selector:
     app: votingapp-azure
+    
+---
+# Claim creation
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+spec:
+  storageClassName: azurefile-csi
+  volumeName: azurefile
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+
 ---
 # Storage class 
 kind: StorageClass
@@ -125,19 +141,3 @@ mountOptions:
   - nosharesock
 parameters:
   skuName: Standard_LRS
----
-# Claim creation
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: redis-pvc
-spec:
-  storageClassName: azurefile-csi
-  volumeName: azurefile
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 3Gi
-
-
