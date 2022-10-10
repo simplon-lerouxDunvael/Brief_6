@@ -79,3 +79,6 @@ kubectl get events
 
 # Lister tous les événements d'un pod
 kubectl get events --field-selector involvedObject.name=mypod
+
+# Décrire les problèmes liés à un pod spécifique
+kubectl describe pod pod-missing-config
