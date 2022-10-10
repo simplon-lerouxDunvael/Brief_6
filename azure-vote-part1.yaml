@@ -14,7 +14,7 @@ spec:
         app: redis-azure.az-redis
     spec:
       containers:
-      - name: redis.az-redis
+      - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
         env:
