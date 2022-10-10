@@ -39,9 +39,9 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
-        volumeMounts:
-        - name: redis-pvshare
-          mountPath: /data
+#        volumeMounts:
+#        - name: redis-pvshare
+#          mountPath: /data
 
 ---
 # Service for Redis
