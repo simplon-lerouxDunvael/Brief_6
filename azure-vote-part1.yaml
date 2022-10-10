@@ -103,6 +103,7 @@ spec:
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
+  label: redis-sc
   name: redis-sc
 provisioner: file.csi.azure.com
 reclaimPolicy: Retain
