@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis-azure
+      app: redis-azure.az-redis
   template:
     metadata:
       labels:
-        app: redis-azure
+        app: redis-azure.az-redis
     spec:
       containers:
-      - name: redis
+      - name: redis.az-redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
         env:
@@ -40,12 +40,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: az-redis
+  name: redis-service
 spec: # Par default le type est ClusterIP, il n'y a aucun raison de le spécifier (type: ClusterIP)
   ports:
   - port: 6379
   selector:
-    app: redis-azure
+    app: redis-azure.az-redis
 ---
 # Deployment of Voting App
 apiVersion: apps/v1
@@ -56,11 +56,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: votingapp-azure
+      app: votingapp-azure.az-voteapp
   template:
     metadata:
       labels:
-        app: votingapp-azure
+        app: votingapp-azure.az-voteapp
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
@@ -91,19 +91,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: vote-service
+  name: voting-service
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: votingapp-azure
+    app: votingapp-azure.az-voteapp
 ---
 # Storage class 
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: redis-sc
+  name: redis-sc.az-redis
 provisioner: file.csi.azure.com
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
@@ -123,7 +123,7 @@ parameters:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: redis-pvc
+  name: redis-pvc.az-redis
 spec:
   storageClassName: azurefile-csi
   volumeName: azurefile
