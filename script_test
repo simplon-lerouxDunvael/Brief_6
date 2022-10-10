@@ -39,7 +39,8 @@ kubectl delete pvc --all
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
 
-
+# Etablir un alias pour une commande sur azure CLi 
+alias cequel'onveutmettre="cequel'onveutchanger"
 
 
 
