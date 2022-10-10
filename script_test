@@ -13,7 +13,7 @@ az aks get-credentials --resource-group b6duna --name AKSClusterd
 kubectl apply -f azure-vote.yaml # (nom du fichier yaml)
 
 # Vérifier quel est le type de networking du service
-kubectl get service vote-service --watch
+kubectl get service --watch
 
 # Créer un secret pour le mot de passe Redis avec un username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
