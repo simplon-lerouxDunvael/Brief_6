@@ -126,7 +126,7 @@ metadata:
   name: redis-pvc
 spec:
   storageClassName: azurefile_csi
-  volumename : azurefile
+  volumename: azurefile
   accessModes:
     - ReadWriteMany
   resources:
