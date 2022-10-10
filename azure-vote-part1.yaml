@@ -39,6 +39,9 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
+        volumeMounts:
+        - name: diskredis
+          mountPath: /data
 
 ---
 # Service for Redis
