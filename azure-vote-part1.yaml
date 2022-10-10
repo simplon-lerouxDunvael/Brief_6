@@ -91,6 +91,7 @@ spec:
             secretKeyRef:
               name: redis-secret-duna
               key: password
+
 ---
 # Load Balancer Service for Voting App
 apiVersion: v1
@@ -123,7 +124,7 @@ spec:
     volumeHandle: unique-volumeid  # make sure this volumeid is unique in the cluster
     volumeAttributes:
       resourceGroup: b6duna  # optional, only set this when storage account is not in the same resource group as agent node
-      shareName: redispv-share
+      shareName: redis-pvshare
     nodeStageSecretRef:
       name: redis-secret-duna
       namespace: default
@@ -148,19 +149,18 @@ reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
+  - dir_mode=0640
+  - file_mode=0640
   - uid=0
   - gid=0
   - mfsymlinks
   - cache=strict # https://linux.die.net/man/8/mount.cifs
   - nosharesock
-  - nobrl
 parameters:
   skuName: Standard_LRS
 
 ---
-# Claim creation
+# PV Claim creation
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
