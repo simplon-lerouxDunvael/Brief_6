@@ -37,6 +37,10 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
+      volumes: 
+      - name: redis-volume
+        persistentVolumeClaim:
+          claimName: redis-pvc
 ---
 # Service for Redis
 apiVersion: v1
@@ -136,7 +140,3 @@ spec:
       storage: 3Gi
 
 
- #     volumes: 
- #     - name: redis-volume
- #       persistentVolumeClaim:
- #         claimName: redis-pvc
