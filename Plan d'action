@@ -46,28 +46,33 @@ Lecture des documentations afin de déterminer les fonctionnements, prérequis e
 Infrastructure Plannifiée
 
 ```mermaid
-flowchart TD 
+flowchart LR
 
 yml(YAML file)
-appGW(Load Balancer)
 
     subgraph AZ [AZURE]
         subgraph BDD [Stockage Redis]
             Stock(PVC)
         end
     
-    subgraph Cluster [Cluster Kubernetes]
-        KT-temp1(Voting App Container)
-        KT-temp2(Redis Container)
-        tag1(Tag V.app)
-        tag2(Tag Redis)
-        end
+            subgraph Cluster [Cluster Kubernetes]
+                tag1(Tag V.app)
+                tag2(Tag Redis)
+                appGW(Load Balancer)
 
+            subgraph n1 [Node 1]
+                KT-temp1(Containers)
+            end
+
+            subgraph n2 [Node 2]
+                KT-temp2(Containers)
+            end
+    end
 
 appGW --> KT-temp2
 KT-temp2 --> Stock
-KT-temp2 -.-> tag2
-KT-temp1 -.-> tag1
+tag2 -.-> KT-temp2
+tag1 -.-> KT-temp1
 yml -.-> tag2
 yml -.-> tag1
 
