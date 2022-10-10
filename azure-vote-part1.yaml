@@ -125,7 +125,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: redis-pvc
 spec:
-  storageClassName: azurefile_csi
+  storageClassName: azurefile-csi
   volumeName: azurefile
   accessModes:
     - ReadWriteMany
