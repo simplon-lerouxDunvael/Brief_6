@@ -7,8 +7,20 @@
 ### [1 - Lecture des documentations Kubernetes et AKS](#Documentations)
 ### [2 - Topologie de l'infrastructure](#Topologie)
 ### [3 - Liste ressources Azure](#Ressources)
-### [4 - Déploiement d'un cluster AKS avec deux nodes](#Cluster)
+### [4 - Déploiement d'un cluster AKS avec deux nodes](#ClusterAKS)
 ### [5 - Déploiement de Redis](#Redis)
+### [6 - Déploiement de Voting App](#VotingApp)
+### [7 - Déploiement d’un Load Balancer](#LB)
+### [8 - Application d'un ClusterIP pour Redis](#ClusterIP)
+### [9 - Configuration d'un mot de passe pour le container Redis](#MDP)
+### [10 - Création d'un secret Kubenetes](#Secret)
+### [11 - Création d'un compte de stockage](#Stockage)
+### [12 - Configuration d'un Persistent Volume Claim avec StorageClass](#PVC)
+### [12 - Ajout d'un DNS pour les pods Redis et Voting App](#DNS)
+### [14 - 
+### [15 - 
+### [16 - 
+### [17 - Executive summary + fonctionnement de Kubernetes](#Summary)
 
 [&#8679;](#top)   
 
@@ -104,7 +116,7 @@ yml -.-> tag1
 
 [&#8679;](#top)  
 
-<div id='Cluster'/>   
+<div id='ClusterAKS'/>   
 
 04.   **Déploiement d'un cluster AKS avec deux nodes**
 
@@ -116,50 +128,63 @@ yml -.-> tag1
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='VotingApp'/>  
 
 06.   **Déploiement de Voting App**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='LB'/>  
 
 07.   **Déploiement d’un Load Balancer**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='ClusterIP'/>  
    
 08.   **Application d'un ClusterIP pour Redis**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='MDP'/>  
 
 09.   **Configuration d'un mot de passe pour le container Redis**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='Secret'/>  
 
 10.   **Création d'un secret Kubenetes**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='Stockage'/>  
 
 11.   **Création d'un compte de stockage**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='PVC'/>  
 
 12.   **Configuration d'un Persistent Volume Claim avec StorageClass**
 
 [&#8679;](#top)  
 
-<div id='Terraform'/>  
+<div id='DNS'/>  
 
-13.  **Executive summary + fonctionnement de Kubernetes**
+13. **Ajout d'un DNS pour les pods Redis et Voting App**
+
+
+
+
+
+
+
+
+
+
+<div id='Summary'/>  
+
+1.   **Executive summary + fonctionnement de Kubernetes**
 
 [&#8679;](#top)
