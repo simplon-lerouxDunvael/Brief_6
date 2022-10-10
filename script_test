@@ -31,6 +31,10 @@ az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORA
 # Créer un secret Kubernetes
 kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
 
+# Supprimer les déploiements, les services et les persistent volumes claim
+kubectl delete deploy --all
+kubectl delete svc --all
+kubectl delete pvc --all
 
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
@@ -40,11 +44,6 @@ az group delete --name b6duna --yes --no-wait
 
 
 
-
-
-
-# Créer un enregistrement DNS
-k8s-redis.twixlmedia.com A 104.40.246.55
 
 # Vérifier les pods créés et leur statut
 kubectl get nodes
