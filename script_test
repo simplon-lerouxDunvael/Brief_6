@@ -35,6 +35,7 @@ kubectl create secret generic storage-secret --from-literal=azurestorageaccountn
 kubectl delete deploy --all
 kubectl delete svc --all
 kubectl delete pvc --all
+kubectl delete pv --all
 
 # Supprimer le Cluster
 az group delete --name b6duna --yes --no-wait
