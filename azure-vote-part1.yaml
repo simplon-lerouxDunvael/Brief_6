@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: az-redis
-  labels: redis
 spec:
   replicas: 1
   selector:
@@ -105,7 +104,7 @@ spec:
   - port: 80
   selector:
     app: votingapp-azure
-    
+
 ---
 # Claim creation
 apiVersion: v1
