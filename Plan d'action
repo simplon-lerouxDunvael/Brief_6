@@ -16,10 +16,13 @@
 ### [10 - Création d'un secret Kubenetes](#Secret)
 ### [11 - Création d'un compte de stockage](#Stockage)
 ### [12 - Configuration d'un Persistent Volume Claim avec StorageClass](#PVC)
-### [12 - Ajout d'un DNS pour les pods Redis et Voting App](#DNS)
-### [14 - 
-### [15 - 
-### [16 - 
+### [13 - solution issue](#DNS)
+### [14 - Ajout de l'Add-on Agic]
+### [15 - Création d'Ingress controller avec Kubernetes/nginx]
+### [16 - Modification de la zone DNS]
+### [17 - Création d'un certificat TLS avec cert-manager pour la Voting App]
+### [18 - Scaling de la Voting App]
+### [19 - Test de la montée en charge]
 ### [17 - Executive summary + fonctionnement de Kubernetes](#Summary)
 
 [&#8679;](#top)   
@@ -117,79 +120,98 @@ yml -.-> tag1
 | Storage account (Standard LRS) | ✗ | ✓ | ✓ |
 | Storage Class | ✗ | ✓ | ✓ |
 | Persistent Vol. CLaim (3Gi)| ✗ | ✓ | ✓ |
-| DNS |   | ✓ | ✓ |
+|  |   |  |  |
 
 [&#8679;](#top)  
 
 <div id='ClusterAKS'/>   
 
-04.   **Déploiement d'un cluster AKS avec deux nodes**
+04.    **Déploiement d'un cluster AKS avec deux nodes**
 
 [&#8679;](#top)  
 
 <div id='Redis'/>  
 
-05.   **Déploiement de Redis**
+05.    **Déploiement de Redis**
 
 [&#8679;](#top)  
 
 <div id='VotingApp'/>  
 
-06.   **Déploiement de Voting App**
+06.    **Déploiement de Voting App**
 
 [&#8679;](#top)  
 
 <div id='LB'/>  
 
-07.   **Déploiement d’un Load Balancer**
+07.    **Déploiement d’un Load Balancer**
 
 [&#8679;](#top)  
 
 <div id='ClusterIP'/>  
    
-08.   **Application d'un ClusterIP pour Redis**
+08.    **Application d'un ClusterIP pour Redis**
 
 [&#8679;](#top)  
 
 <div id='MDP'/>  
 
-09.   **Configuration d'un mot de passe pour le container Redis**
+09.    **Configuration d'un mot de passe pour le container Redis**
 
 [&#8679;](#top)  
 
 <div id='Secret'/>  
 
-10.   **Création d'un secret Kubenetes**
+10.    **Création d'un secret Kubenetes**
 
 [&#8679;](#top)  
 
 <div id='Stockage'/>  
 
-11.   **Création d'un compte de stockage**
+11.    **Création d'un compte de stockage**
 
 [&#8679;](#top)  
 
 <div id='PVC'/>  
 
-12.   **Configuration d'un Persistent Volume Claim avec StorageClass**
+12.    **Configuration d'un Persistent Volume Claim avec StorageClass**
 
 [&#8679;](#top)  
 
 <div id='DNS'/>  
 
-13. **Ajout d'un DNS pour les pods Redis et Voting App**
+13.  **Solution issue**
 
+[&#8679;](#top)
 
+14.  **Ajout de l'Add-on Agic**
 
+[&#8679;](#top)
 
+15.  **Création d'Ingress controller avec Kubernetes/nginx**
+    
+[&#8679;](#top)
 
+16.  **Modification de la zone DNS**
 
+[&#8679;](#top)
 
+17.  **17 - Création d'un certificat TLS avec cert-manager pour la Voting App**
 
+[&#8679;](#top)
 
+18.  **Scaling de la Voting App**
+
+[&#8679;](#top)
+
+19.  **Test de la montée en charge**
+
+[&#8679;](#top)
 
 <div id='Summary'/>  
 
-1.   **Executive summary + fonctionnement de Kubernetes**
+1...    **Executive summary + fonctionnement de Kubernetes**
 
 [&#8679;](#top)
+
+1... **Document d'Architecture Technique de l'infrastructure déployée**
