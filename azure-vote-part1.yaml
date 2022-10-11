@@ -13,14 +13,21 @@ spec:
       labels:
         app: redis-azure
     spec:
-      volumes: 
-      - name: redis-volume
-        persistentVolumeClaim:
-          claimName: redis-pvc
+      volumes:
+        - name: red-vol
+          csi:
+            driver: file.csi.azure.com
+            readOnly: false
+            volumeAttributes:
+              secretName: storage-secret  # required
+              shareName: b6d-redis-fileshare  # required
       containers:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
+        volumeMounts:
+        - name: red-vol
+          mountPath: /data
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
@@ -39,12 +46,8 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
-#        volumeMounts:
-#        - name: redis-pvshare
-#          mountPath: /data
-
 ---
-# Service for Redis
+# Service for Redis (Cluster IP)
 apiVersion: v1
 kind: Service
 metadata:
@@ -124,12 +127,12 @@ spec:
   csi:
     driver: file.csi.azure.com
     readOnly: false
-    volumeHandle: unique-volumeid  # make sure this volumeid is unique in the cluster
+    volumeHandle: unique-volumeid
     volumeAttributes:
-      resourceGroup: b6duna  # optional, only set this when storage account is not in the same resource group as agent node
-      shareName: redis-pvshare
+      resourceGroup: b6duna
+      shareName: b6d-redis-fileshare
     nodeStageSecretRef:
-      name: redis-secret-duna
+      name: storage-secret
       namespace: default
   mountOptions:
     - dir_mode=0777
