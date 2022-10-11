@@ -34,15 +34,10 @@ spec:
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
-        - name: REDIS_USR
-          valueFrom:
-            secretKeyRef:
-              name: redis-credentials
-              key: username
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
-              name: redis-credentials
+              name: redis-secret-duna
               key: password
         ports:
         - containerPort: 6379
@@ -88,15 +83,10 @@ spec:
             value: "redis-host.azb-clusterip"
           - name: STRESS_SECS
             value: "0"
-          - name: REDIS_USR
-            valueFrom:
-              secretKeyRef:
-                name: redis-credentials
-                key: username
           - name: REDIS_PWD
             valueFrom:
               secretKeyRef:
-                name: redis-credentials
+                name: redis-secret-duna
                 key: password
 ---
 apiVersion: v1
