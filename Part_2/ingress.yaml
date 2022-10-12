@@ -1,3 +1,4 @@
+# Creation of Namespace
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -6,6 +7,7 @@ metadata:
     app.kubernetes.io/name: ingress-nginx
   name: ingress-nginx
 ---
+# Creation of service account for nginx
 apiVersion: v1
 automountServiceAccountToken: true
 kind: ServiceAccount
@@ -19,6 +21,7 @@ metadata:
   name: ingress-nginx
   namespace: ingress-nginx
 ---
+# Creation of service account admission for nginx
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -31,6 +34,7 @@ metadata:
   name: ingress-nginx-admission
   namespace: ingress-nginx
 ---
+# Creation of controller role for nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -136,6 +140,7 @@ rules:
   - watch
   - get
 ---
+# Creation of webhook for nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -156,6 +161,7 @@ rules:
   - get
   - create
 ---
+# Creation of the Cluster role for nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -237,6 +243,7 @@ rules:
   - watch
   - get
 ---
+# Creation of the Cluster role admission for nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -256,6 +263,7 @@ rules:
   - get
   - update
 ---
+# Creation of RoleBinding for the service account of nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -276,6 +284,7 @@ subjects:
   name: ingress-nginx
   namespace: ingress-nginx
 ---
+# Creation of Rolebinding for the service account admission of nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -296,6 +305,7 @@ subjects:
   name: ingress-nginx-admission
   namespace: ingress-nginx
 ---
+# Creation of ClusterRoleBinding for the Cluster of nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -314,6 +324,7 @@ subjects:
   name: ingress-nginx
   namespace: ingress-nginx
 ---
+# Creation of ClusterRoleBinding for the Cluster admission of nginx
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -333,6 +344,7 @@ subjects:
   name: ingress-nginx-admission
   namespace: ingress-nginx
 ---
+# Creation of config for the controller of nginx
 apiVersion: v1
 data:
   allow-snippet-annotations: "true"
@@ -347,6 +359,7 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 ---
+# Creation of Load Balancer for the controller of nginx
 apiVersion: v1
 kind: Service
 metadata:
@@ -380,6 +393,7 @@ spec:
     app.kubernetes.io/name: ingress-nginx
   type: LoadBalancer
 ---
+# Creation of ClusterIP for the controller admission of nginx
 apiVersion: v1
 kind: Service
 metadata:
@@ -403,6 +417,7 @@ spec:
     app.kubernetes.io/name: ingress-nginx
   type: ClusterIP
 ---
+# Deployment of nginx controller
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -515,6 +530,7 @@ spec:
         secret:
           secretName: ingress-nginx-admission
 ---
+# Creation of job
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -562,6 +578,7 @@ spec:
         runAsUser: 2000
       serviceAccountName: ingress-nginx-admission
 ---
+# Creation of job 2
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -611,6 +628,7 @@ spec:
         runAsUser: 2000
       serviceAccountName: ingress-nginx-admission
 ---
+# Creation of IngressClass
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
@@ -624,6 +642,7 @@ metadata:
 spec:
   controller: k8s.io/ingress-nginx
 ---
+# Creation of config for webhook
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
