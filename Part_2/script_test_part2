@@ -1,8 +1,8 @@
 # set this to the name of Azure Container Registry
-ACRduna=myContainerRegistry
+acrduna=myContainerRegistry
 
 # Ccreate an Azure Container Registry
-az acr create -n ACRduna -g b6duna --sku basic
+az acr create -n acrduna -g b6duna --sku basic
 
 # Create an AKS cluster with ACR integration
 az aks create -n AKSClusterd2 -g b6duna --generate-ssh-keys --attach-acr $MYACR
