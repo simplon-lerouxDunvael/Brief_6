@@ -44,10 +44,6 @@ az group delete --name b6duna --yes --no-wait
 # Create an alias for a command on azure CLi 
 alias cequel'onveutmettre="cequel'onveutchanger"
 
-
-
-
-
 # Check the created pods and their status
 kubectl get nodes
 
