@@ -4,4 +4,19 @@ a1f74e2d-ec58-4f9a-a112-088e3469febb
 # Create an AKS cluster
 az aks create -g b6duna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
 
-# 
+# Connexion to Cluster :
+az aks get-credentials --resource-group b6duna --name AKSClusterd2
+
+# Deploy application with yaml file
+kubectl apply -f ingress.yaml # (nom du fichier yaml)
+
+# Check the created deployments, services and pods and their status
+kubectl get deploy --namespace ingress-nginx
+kubectl get svc --namespace ingress-nginx
+kubectl get pods --namespace ingress-nginx
+
+# Create a secret for the redis password with a username
+kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
+
+# Kubernetes secret creation
+kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
