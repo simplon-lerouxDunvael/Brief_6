@@ -1,84 +1,82 @@
-# Création du groupe de ressources Azure
+# Azure resource group Creation
 az group create --name b6duna --location japaneast
 
-# Création du Cluster AKS
+# AKS Cluster creation
 az aks create -g b6duna -n AKSClusterd --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
 
-# Connexion au Cluster :
+# Connexion to Cluster :
 az aks get-credentials --resource-group b6duna --name AKSClusterd
 
-*Result *Merged "AKSClusterd" as current context in /home/dunvael/.kube/config*
+*Results* : 
+Merged "AKSClusterd" as current context in /home/dunvael/.kube/config*
 
-# Déployer l'application à l'aide du fichier yaml
+# Deploy application with yaml file
 kubectl apply -f azure-vote.yaml # (nom du fichier yaml)
 
-# Vérifier quel est le type de networking du service
+# Check the services
 kubectl get service 
 # --watch si l'on souhaite vérifier en permanence
 
-# Créer un secret pour le mot de passe Redis avec un username
+# Create a secret for the redis password with a username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
 
-# Vérifier si le secret a bien été créé
+# Check the secret creation
 kubectl describe secret nomdusecret
 
-# Créer un storage account
+# Storage account creation
 az storage account create -n b6dredisstockacc -g b6duna -l japaneast --sku Standard_LRS
 
-# Créer un fileshare
+# Fileshare creation
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 
-# Créer un secret Kubernetes
+# Kubernetes secret creation
 kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
 
-# Supprimer les déploiements, les services et les persistent volumes claim
+# Delete deployments, services et persistent volumes claim
 kubectl delete deploy --all
 kubectl delete svc --all
 kubectl delete pvc --all
 kubectl delete pv --all
 
-# Supprimer le Cluster
+# Delete the resource group
 az group delete --name b6duna --yes --no-wait
 
-# Etablir un alias pour une commande sur azure CLi 
+# Create an alias for a command on azure CLi 
 alias cequel'onveutmettre="cequel'onveutchanger"
 
 
 
 
 
-# Vérifier les pods créés et leur statut
+# Check the created pods and their status
 kubectl get nodes
 
-# Récupérer les pods avec leur id et leur statut (running...)
+# Get the pods with their id et status
 kubectl describe pods "podid"
 
-# Supprimer un pod
+# Delete a pod
 kubectl delete pods "podid"
 
-# Récupérer les pods avec leur id et leur statut
-kubectl describe pods podid
-
-# Récupérer le déploiement
+# Get the deployments
 kubectl get deployment
 
-# Vérifier le statut du déploiement
+# Get the deployments with their id et status
 kubectl describe deployment mydeployment
 
-# Supprimer le déploiement
+# Delete the deployments
 kubectl delete deployment nomdudéploiement
 
-# Accéder aux logs de tous les containers
+# Access all the logs from all containers
 kubectl logs podname --all-containers
 
-# Accéder aux logs d'un container
+# Access the logs from a specific container
 kubectl logs podname -c mycontainer
 
-# Accéder aux événements
+# Access to events
 kubectl get events
 
-# Lister tous les événements d'un pod
+# List all events from a specific pod
 kubectl get events --field-selector involvedObject.name=mypod
 
-# Décrire les problèmes liés à un pod spécifique
+# Describe the issues from one specific pod
 kubectl describe pod pod-missing-config
