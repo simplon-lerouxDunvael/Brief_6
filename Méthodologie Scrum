@@ -38,9 +38,11 @@ Objectifs  =
 
 **12/10/22 :**
 Résultats de la veille :
-
+* Perdu plusieurs jours, le problème de Kubernetes était en fait un comportement normal. Problème résolu.
+* PVC fonctionnel et vérifié.
+* Partie 2 recherche de la documentation commencée, mais pas débuté la part 2.
 Objectifs  = 
-* 
+* Terminer le chapitre 2 de la part 2 du brief 6 pour commencer le chapitre 3 demain.
 
 **13/10/22 :**
 Résultats de la veille :
