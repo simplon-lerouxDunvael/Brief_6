@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   dnsNames:
-  - vote.simplon-duna.space
+  - smoothie.simplon-duna.space
   issuerRef:
     name: letsencrypt
     kind: Issuer
