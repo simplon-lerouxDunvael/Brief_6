@@ -51,9 +51,11 @@ kubectl create rolebinding --role=access-secrets default-to-secrets --serviceacc
 
 
 
+# Check Webhook configuration
+kubectl get ValidatingWebhookConfiguration -A
 
-
-
+# Delete Webhook configuration for role ingress-nginx-admission
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
 # Create a secret for the redis password with a username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
