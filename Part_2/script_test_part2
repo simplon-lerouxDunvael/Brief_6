@@ -15,7 +15,7 @@ kubectl get deploy --namespace ingress-nginx
 kubectl get svc --namespace ingress-nginx
 kubectl get pods --namespace ingress-nginx
 
-# 
+# Get the IP address to point the DNS to nginx
 k get ingress
 
 # Install helm and jetstack
