@@ -58,7 +58,7 @@ kubectl get ValidatingWebhookConfiguration -A
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
 # Create a secret for the redis password with a username
-kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
+kubectl create secret generic redis-secret-duna --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
 
 # Kubernetes secret creation
 kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
