@@ -18,7 +18,7 @@ kubectl get service
 # --watch si l'on souhaite vérifier en permanence
 
 # Create a secret for the redis password with a username
-kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
+kubectl create secret generic redis-secret-duna --from-literal=username=userduna --from-literal=password=redis_password_915
 
 # Check the secret creation
 kubectl describe secret nomdusecret
@@ -30,7 +30,7 @@ az storage account create -n b6dredisstockacc -g b6duna -l japaneast --sku Stand
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 
 # Kubernetes secret creation
-kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=Yd6zb/j1AswJ3ilydHw4ood/vn6VXFLuZbIyViX2gpw8OoXzj3SLreg5GvxnowD5TiyYIw0vt6s9+ASthN1pqQ==
+kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=L7GPm1jVwpKEHiJino8OJ9CssGmTLhn6DO3W0Wq2VUo2M0R1LWsQIENZEW91TfFTM4NZJm/ZiPjX+AStbpfbEA==
 
 # Delete deployments, services et persistent volumes claim
 kubectl delete deploy --all
