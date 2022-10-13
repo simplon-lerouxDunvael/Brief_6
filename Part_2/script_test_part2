@@ -36,7 +36,12 @@ STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 
-#
+# Check pods for namespace cert-manager
+kubectl get pods --namespace cert-manager
+
+# Create a role for the gandi secret and bind it to the webhook
+kubectl create role access-secrets --verb=get,list,watch,update,create --resource=secrets
+kubectl create rolebinding --role=access-secrets default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665665029
 
 
 
