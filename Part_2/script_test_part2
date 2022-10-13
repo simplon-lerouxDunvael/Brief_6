@@ -26,7 +26,7 @@ helm search repo jetstack
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true --version v1.5.4 --set 'extraArgs={--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
 
 # Create a gandi secret for cert-manager
-kubectl create secret generic gandi-credentials --namespace cert-manager --from-literal=api-token='ZqNwVOYJMLjbRuYTm0Ea9X0P'
+kubectl create secret generic gandi-credentials --from-literal=api-token='ZqNwVOYJMLjbRuYTm0Ea9X0P'
 *Results* = secret/gandi-credentials created
 
 # Install cert-manager-webhook
@@ -46,6 +46,13 @@ kubectl get pods --namespace cert-manager
 kubectl create role access-secrets --verb=get,list,watch,update,create --resource=secrets
 kubectl create rolebinding --role=access-secrets default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665665029
 
+k apply -f issuer.yaml
+k apply -f certif-space-com.yaml
+k get certificate -n cert-manager
+k describe certificate -n cert-manager
+k describe certificaterequest vote.simplon-duna.space-g66tb -n cert-manager
+k describe order vote.simplon-duna.space-g66tb-3260173208 -n cert-manager
+k describe challenge
 
 
 
