@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: vote.simplon-duna.space
+  name: smoothie.simplon-duna.space
 spec:
   dnsNames:
   - smoothie.simplon-duna.space
