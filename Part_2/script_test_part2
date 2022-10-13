@@ -22,8 +22,21 @@ helm search repo jetstack
 # Install cert-manager with helm
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true --version v1.5.4 --set 'extraArgs={--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
 
+# Create a gandi secret for cert-manager
+kubectl create secret generic gandi-credentials --namespace cert-manager --from-literal=api-token='ZqNwVOYJMLjbRuYTm0Ea9X0P'
+*Results* = secret/gandi-credentials created
 
+# Install cert-manager-webhook
+helm install cert-manager-webhook-gandi --repo https://bwolf.github.io/cert-manager-webhook-gandi --version v0.2.0 --namespace cert-manager --set features.apiPriorityAndFairness=true --set logLevel=6 --generate-name
+*Results* = 
+NAME: cert-manager-webhook-gandi-1665665029
+LAST DEPLOYED: Thu Oct 13 12:43:56 2022
+NAMESPACE: cert-manager
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 
+#
 
 
 
