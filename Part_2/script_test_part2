@@ -15,6 +15,9 @@ kubectl get deploy --namespace ingress-nginx
 kubectl get svc --namespace ingress-nginx
 kubectl get pods --namespace ingress-nginx
 
+
+
+
 # Create a secret for the redis password with a username
 kubectl create secret generic nomdusecret --from-literal=nomdeclé=userduna --from-literal=nomdeclé=redis_password_915
 
