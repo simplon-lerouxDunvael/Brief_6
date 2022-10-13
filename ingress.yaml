@@ -11,7 +11,7 @@ spec:
   ingressClassName: nginx
   rules:
   - host: smoothie.simplon-duna.space
-  - http:
+  http:
       paths:
       - path: /
         pathType: Prefix
