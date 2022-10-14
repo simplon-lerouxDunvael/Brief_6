@@ -6,7 +6,7 @@
 ### [0 - Scrum quotidien](#Scrum)
 ### [1 - Lecture des documentations Kubernetes et AKS](#Documentations)
 ### [2 - Topologie de l'infrastructure](#Topologie)
-### [3 - Liste ressources Azure](#Ressources)
+### [3 - Liste ressources](#Ressources)
 ### [4 - Déploiement d'un cluster AKS avec deux nodes](#ClusterAKS)
 ### [5 - Déploiement de Redis](#Redis)
 ### [6 - Déploiement de Voting App](#VotingApp)
@@ -15,15 +15,14 @@
 ### [9 - Configuration d'un mot de passe pour le container Redis](#MDP)
 ### [10 - Création d'un secret Kubenetes](#Secret)
 ### [11 - Création d'un compte de stockage](#Stockage)
-### [12 - Configuration d'un Persistent Volume Claim avec StorageClass](#PVC)
-### [13 - Création d'un ACR](#ACR)
-### [14 - Ajout de l'Add-on Agic]
-### [15 - Création d'Ingress controller avec Kubernetes/nginx]
-### [16 - Modification de la zone DNS]
-### [17 - Création d'un certificat TLS avec cert-manager pour la Voting App]
-### [18 - Scaling de la Voting App]
-### [19 - Test de la montée en charge]
-### [20 - Executive summary + fonctionnement de Kubernetes](#Summary)
+### [12 - Configuration d'un Persistent Volume et d'un P.V. Claim](#PVC)
+### [13 - Création d'Ingress controller avec Kubernetes/nginx]
+### [14 - Création d'un enregistrement DNS sur Gandi]
+### [15 - Création d'un certificat TLS avec cert-manager pour la Voting App]
+### [16 - Scaling de la Voting App]
+### [17 - Test de la montée en charge]
+### [18 - Executive summary + fonctionnement de Kubernetes](#Summary)
+### [19 - Document d'Architecture Technique de l'infrastructure déployée]
 
 [&#8679;](#top)   
 
@@ -100,118 +99,111 @@ yml -.-> tag1
 
 <div id='Ressources'/>  
 
-03. **Liste ressources Azure**
+03.  **Liste ressources**
 
 -----------
 | Ressources | Cluster AKS | Redis |  Voting App |
 | :--------: | :--------: | :--------: | :--------: |
 | Azure service | ✓ | ✓ | ✓ |
 | ressource groupe | ✓ |✓ | ✓ |
-| Vnet    | 10.0.0.0/21 | 10.0.0.0/21 | 10.0.0.0/21 |
-| Subnet | 10.0.6.0/24 | 10.0.5.0/24 | ... |
-| IP Public | Dyn | No | ✓ |
 | SSH (port) | ✗ | 6379 | 80 |
 | CPU | ✗ | 100m-250m | 100m-250m |
-| Mémoire |  ✗ | 128mi-256mi | 128mi-256mi |
+| Mémoire | ✗ | 128mi-256mi | 128mi-256mi |
 | Image | ✗ | redis:latest  | whujin11e/public:azure_voting_app |
 | Load Balancer | ✗ | ✓ puis ✗ | ✓ |
 | ClusterIP | ✗ | ✗ puis ✓ | ✗ |
-| Kebernetes secret | ✗ | ✓ | ✓ |
+| Kebernetes secret | ✓ | ✓ | ✓ |
+| Storage secret | ✓ | ✓ | ✓ |
 | Storage account (Standard LRS) | ✗ | ✓ | ✓ |
-| Storage Class | ✗ | ✓ | ✓ |
-| Persistent Vol. CLaim (3Gi)| ✗ | ✓ | ✓ |
-|  |   |  |  |
+| Persitent Volume | ✗ | ✓ | ✗ |
+| Persistent Vol. Claim (3Gi)| ✗ | ✓ | ✗ |
+| Ingress | ✓ | ✗ | ✓ |
+| Nginx| ✓ | ✗ | ✗ |
+| Certificat TLS | ✗ | ✗ | ✓ |
+| Auto-scaling | ✗ | ✗ | ✓ |
 
 [&#8679;](#top)  
 
 <div id='ClusterAKS'/>   
 
-04.    **Déploiement d'un cluster AKS avec deux nodes**
+04.     **Déploiement d'un cluster AKS avec deux nodes**
 
 [&#8679;](#top)  
 
 <div id='Redis'/>  
 
-05.    **Déploiement de Redis**
+05.     **Déploiement de Redis**
 
 [&#8679;](#top)  
 
 <div id='VotingApp'/>  
 
-06.    **Déploiement de Voting App**
+06.     **Déploiement de Voting App**
 
 [&#8679;](#top)  
 
 <div id='LB'/>  
 
-07.    **Déploiement d’un Load Balancer**
+07.     **Déploiement d’un Load Balancer**
 
 [&#8679;](#top)  
 
 <div id='ClusterIP'/>  
    
-08.    **Application d'un ClusterIP pour Redis**
+08.     **Application d'un ClusterIP pour Redis**
 
 [&#8679;](#top)  
 
 <div id='MDP'/>  
 
-09.    **Configuration d'un mot de passe pour le container Redis**
+09.     **Configuration d'un mot de passe pour le container Redis**
 
 [&#8679;](#top)  
 
 <div id='Secret'/>  
 
-10.    **Création d'un secret Kubenetes**
+10.     **Création d'un secret Kubenetes**
 
 [&#8679;](#top)  
 
 <div id='Stockage'/>  
 
-11.    **Création d'un compte de stockage**
+11.     **Création d'un compte de stockage**
 
 [&#8679;](#top)  
 
 <div id='PVC'/>  
 
-12.    **Configuration d'un Persistent Volume Claim avec StorageClass**
+12.     **Configuration d'un Persistent Volume et d'un P.V. Claim**
 
 [&#8679;](#top)  
 
-<div id='ACR'/> 
+<div id='Ingress'/> 
 
-13. **Création d'un ACR**
-
-[&#8679;](#top)
-
-14.   **Ajout de l'Add-on Agic**
-
-[&#8679;](#top)
-
-15.   **Création d'Ingress controller avec Kubernetes/nginx**
+13.    **Création d'Ingress controller avec Kubernetes/nginx**
     
 [&#8679;](#top)
 
-16.   **Modification de la zone DNS**
+14.    **Création d'un enregistrement DNS sur Gandi**
 
 [&#8679;](#top)
 
-17.   **Création d'un certificat TLS avec cert-manager pour la Voting App**
+15.    **Création d'un certificat TLS avec cert-manager pour la Voting App**
 
 [&#8679;](#top)
 
-18.   **Scaling de la Voting App**
+16.    **Scaling de la Voting App**
 
 [&#8679;](#top)
 
-19.   **Test de la montée en charge**
+17.    **Test de la montée en charge**
 
 [&#8679;](#top)
 
 <div id='Summary'/>  
 
-1...    **Executive summary + fonctionnement de Kubernetes**
+18.    **Executive summary + fonctionnement de Kubernetes**
 
 [&#8679;](#top)
 
-1... **Document d'Architecture Technique de l'infrastructure déployée**
+19. **Document d'Architecture Technique de l'infrastructure déployée**
