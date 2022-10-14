@@ -16,13 +16,13 @@
 ### [10 - Création d'un secret Kubenetes](#Secret)
 ### [11 - Création d'un compte de stockage](#Stockage)
 ### [12 - Configuration d'un Persistent Volume et d'un P.V. Claim](#PVC)
-### [13 - Création d'Ingress controller avec Kubernetes/nginx]
-### [14 - Création d'un enregistrement DNS sur Gandi]
-### [15 - Création d'un certificat TLS avec cert-manager pour la Voting App]
-### [16 - Scaling de la Voting App]
-### [17 - Test de la montée en charge]
+### [13 - Création d'Ingress controller avec Kubernetes/nginx](#Ingress)
+### [14 - Création d'un enregistrement DNS sur Gandi](#Gandi)
+### [15 - Création d'un certificat TLS avec cert-manager pour la Voting App](#certificat)
+### [16 - Auto-scaling horizontal de la Voting App](#Auto-scaling)
+### [17 - Test de la montée en charge](#Charge)
 ### [18 - Executive summary + fonctionnement de Kubernetes](#Summary)
-### [19 - Document d'Architecture Technique de l'infrastructure déployée]
+### [19 - Document d'Architecture Technique de l'infrastructure déployée](#DAT)
 
 [&#8679;](#top)   
 
@@ -184,17 +184,25 @@ yml -.-> tag1
     
 [&#8679;](#top)
 
+<div id='Gandi'/> 
+
 14.    **Création d'un enregistrement DNS sur Gandi**
 
 [&#8679;](#top)
+
+<div id='Certificat'/> 
 
 15.    **Création d'un certificat TLS avec cert-manager pour la Voting App**
 
 [&#8679;](#top)
 
-16.    **Scaling de la Voting App**
+<div id='Auto-scaling'/> 
+
+16.    **Auto-scaling horizontal de la Voting App**
 
 [&#8679;](#top)
+
+<div id='Charge'/> 
 
 17.    **Test de la montée en charge**
 
@@ -206,4 +214,8 @@ yml -.-> tag1
 
 [&#8679;](#top)
 
+<div id='DAT'/> 
+
 19. **Document d'Architecture Technique de l'infrastructure déployée**
+
+[&#8679;](#top)
