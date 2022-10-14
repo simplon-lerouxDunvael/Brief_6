@@ -57,6 +57,11 @@ k describe certificaterequest
 k describe order
 k describe challenge
 
+# Activate the autoscaler on an existing cluster
+az aks update --resource-group b6duna --name AKSClusterd2 --enable-cluster-autoscaler --min-count 1 --max-count 8
+
+# 
+
 
 
 
