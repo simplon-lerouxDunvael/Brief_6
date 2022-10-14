@@ -66,8 +66,7 @@ k apply -f autoscaling.yaml
 # Check the auto scaling creation
 get HorizontalPodAutoscaler
 *Results* = horizontalpodautoscaler.autoscaling/scaling-voteapp created
-
-
+Check screenshot
 
 # Deploy Kubernetes dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
