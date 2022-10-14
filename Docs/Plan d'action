@@ -92,7 +92,7 @@ KT-temp1 <--> cluster <--> KT-temp2
     class appGW,cluster, vert;
     classDef rose fill:#faf,stroke:#faf,stroke-width:2px,color:#003;
     class Stock, rose;
-    classDef jaune fill:#fe5,stroke:#025,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
+    classDef jaune fill:#fe5,stroke:#fe5,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
     class user, jaune;
     classDef blanc fill:#eff,stroke:#eff,stroke-width:2px,color:#003;
     class Nginx, blanc;
