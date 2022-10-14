@@ -47,38 +47,42 @@ Lecture des documentations afin de déterminer les fonctionnements, prérequis e
 02.  **Topologie de l'infrastructure**
 Infrastructure Plannifiée
 
-```mermaid
-flowchart LR
+*Schéma réalisé dans le cas plus général où les pods ne sont pas dans le même node.*
+*Les pods sont schématisés par un seul objet même s'ils peuvent représenter plusieurs réplicas.*
 
-yml(YAML file)
+```mermaid
+flowchart TD
+
+user(Utilisateurs)
 
     subgraph AZ [AZURE]
-        subgraph BDD [Stockage Redis]
-            Stock(PVC)
-        end
-    
-            subgraph Cluster [Cluster Kubernetes]
-                tag1(Tag V.app)
-                tag2(Tag Redis)
-                appGW(Load Balancer)
+        
+        subgraph Cluster [Cluster Kubernetes]
+            appGW(Load Balancer)
+            cluster(Cluster IP)
+            Nginx(Ingress)
 
             subgraph n1 [Node 1]
-                KT-temp1(Containers)
+                KT-temp1(Redis)
             end
 
             subgraph n2 [Node 2]
-                KT-temp2(Containers)
+                KT-temp2(Voting App)
             end
+        end
+
+        subgraph BDD [Stockage Redis]
+            Stock(Persitent Volume Claim)
+        end
+
     end
 
 appGW --> KT-temp2
-KT-temp2 --> Stock
-tag2 -.-> KT-temp2
-tag1 -.-> KT-temp1
-yml -.-> tag2
-yml -.-> tag1
+KT-temp1 -.-> Stock
+user -.-> Nginx --> |Web| appGW
+KT-temp1 <--> cluster <--> KT-temp2
 
-    end
+ 
 
     classDef rouge fill:#faa,stroke:#f66,stroke-width:4px,color:#fff;
     class Cluster, rouge;
@@ -115,7 +119,7 @@ yml -.-> tag1
 | Kebernetes secret | ✓ | ✓ | ✓ |
 | Storage secret | ✓ | ✓ | ✓ |
 | Storage account (Standard LRS) | ✗ | ✓ | ✓ |
-| Persitent Volume | ✗ | ✓ | ✗ |
+| Persistent Volume | ✗ | ✓ | ✗ |
 | Persistent Vol. Claim (3Gi)| ✗ | ✓ | ✗ |
 | Ingress | ✓ | ✗ | ✓ |
 | Nginx| ✓ | ✗ | ✗ |
