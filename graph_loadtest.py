@@ -17,7 +17,7 @@ import threading
 # x = le temps
 # y = nombres de réponses
 
-url = "http://votingapp-b4g4ld-rg.eastus.cloudapp.azure.com/"
+url = "https://smoothie.simplon-duna.space/"
 
 # Création des formulaires
 form_cats = MultipartEncoder(fields={'vote': 'Cats'})
