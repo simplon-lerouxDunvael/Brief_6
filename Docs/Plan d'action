@@ -72,7 +72,7 @@ user(Utilisateurs)
         end
 
         subgraph BDD [Stockage Redis]
-            Stock(Persitent Volume Claim)
+            Stock(Persistent Volume Claim)
         end
 
     end
@@ -82,20 +82,18 @@ KT-temp1 -.-> Stock
 user -.-> Nginx --> |Web| appGW
 KT-temp1 <--> cluster <--> KT-temp2
 
- 
-
-    classDef rouge fill:#faa,stroke:#f66,stroke-width:4px,color:#fff;
+    classDef rouge fill:#faa,stroke:#f66,stroke-width:3px,color:#002;
     class Cluster, rouge;
-    classDef bleu fill:#aff,stroke:#025,stroke-width:2px,color:#003;
+    classDef bleu fill:#adf,stroke:#025,stroke-width:4px,color:#002;
     class AZ, bleu;
-    classDef rose fill:#f0f,stroke:#025,stroke-width:2px,color:#003;
+    classDef rose fill:#f0f,stroke:#c0d,stroke-width:2px,color:#003;
     class BDD, rose;
-    classDef vert fill:#ae0,stroke:#025,stroke-width:2px,color:#003;
-    class appGW, vert;
+    classDef vert fill:#ad5,stroke:#025,stroke-width:2px,color:#003;
+    class appGW,cluster, vert;
     classDef blanc fill:#faf,stroke:#025,stroke-width:2px,color:#003;
     class Stock, blanc;
     classDef jaune fill:#fe5,stroke:#025,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
-    class yml,tag1,tag2, jaune;
+    class user, jaune;
 
 ```
 
