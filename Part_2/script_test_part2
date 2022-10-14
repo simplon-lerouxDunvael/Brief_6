@@ -60,7 +60,13 @@ k describe challenge
 # Activate the autoscaler on an existing cluster
 az aks update --resource-group b6duna --name AKSClusterd2 --enable-cluster-autoscaler --min-count 1 --max-count 8
 
-# 
+# Create the auto scaling
+k apply -f autoscaling.yaml
+
+# Check the auto scaling creation
+get HorizontalPodAutoscaler
+*Results* = horizontalpodautoscaler.autoscaling/scaling-voteapp created
+
 
 
 # Deploy Kubernetes dashboard
