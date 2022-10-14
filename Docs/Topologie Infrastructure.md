@@ -40,13 +40,11 @@ KT-temp1 <--> cluster <--> KT-temp2
     classDef fuschia fill:#f0f,stroke:#c0d,stroke-width:2px,color:#003;
     class BDD, fuschia;
     classDef vert fill:#ad5,stroke:#ad5,stroke-width:2px,color:#003;
-    class appGW,cluster, vert;
+    class appGW,cluster,Nginx, vert;
     classDef rose fill:#faf,stroke:#faf,stroke-width:2px,color:#003;
     class Stock, rose;
     classDef jaune fill:#fe5,stroke:#fe5,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
     class user, jaune;
-    classDef blanc fill:#eff,stroke:#eff,stroke-width:2px,color:#003;
-    class Nginx, blanc;
     classDef gris fill:#bab,stroke:#bab,stroke-width:2px,color:#003;
     class n1,n2, gris;
     classDef bleugris fill:#bbe,stroke:#bbe,stroke-width:2px,color:#003;
