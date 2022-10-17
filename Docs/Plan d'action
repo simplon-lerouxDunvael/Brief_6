@@ -220,10 +220,14 @@ KT-temp1 <--> cluster <--> KT-temp2
 
 18.    **Executive summary + fonctionnement de Kubernetes**
 
+Cf. document "Executive Summary et fonctionnement de Kubernetes".
+
 [&#8679;](#top)
 
 <div id='DAT'/> 
 
 19. **Document d'Architecture Technique de l'infrastructure déployée**
+
+Cf. document "DAT".
 
 [&#8679;](#top)
