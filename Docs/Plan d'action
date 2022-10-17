@@ -134,55 +134,55 @@ KT-temp1 <--> cluster <--> KT-temp2
 
 <div id='ClusterAKS'/>   
 
-04.     **Déploiement d'un cluster AKS avec deux nodes**
+04.    **Déploiement d'un cluster AKS avec deux nodes**
 
 [&#8679;](#top)  
 
 <div id='Redis'/>  
 
-05.     **Déploiement de Redis**
+05.    **Déploiement de Redis**
 
 [&#8679;](#top)  
 
 <div id='VotingApp'/>  
 
-06.     **Déploiement de Voting App**
+06.    **Déploiement de Voting App**
 
 [&#8679;](#top)  
 
 <div id='LB'/>  
 
-07.     **Déploiement d’un Load Balancer**
+07.    **Déploiement d’un Load Balancer**
 
 [&#8679;](#top)  
 
 <div id='ClusterIP'/>  
    
-08.     **Application d'un ClusterIP pour Redis**
+08.    **Application d'un ClusterIP pour Redis**
 
 [&#8679;](#top)  
 
 <div id='MDP'/>  
 
-09.     **Configuration d'un mot de passe pour le container Redis**
+09.    **Configuration d'un mot de passe pour le container Redis**
 
 [&#8679;](#top)  
 
 <div id='Secret'/>  
 
-10.     **Création d'un secret Kubenetes**
+10.    **Création d'un secret Kubenetes**
 
 [&#8679;](#top)  
 
 <div id='Stockage'/>  
 
-11.     **Création d'un compte de stockage**
+11.    **Création d'un compte de stockage**
 
 [&#8679;](#top)  
 
 <div id='PVC'/>  
 
-12.     **Configuration d'un Persistent Volume et d'un P.V. Claim**
+12.    **Configuration d'un Persistent Volume et d'un P.V. Claim**
 
 [&#8679;](#top)  
 
