@@ -385,7 +385,7 @@ Comme demandé, j'ai ré-utilisé le script de test de montée en charge du Brie
 
 ### **Executive summary + fonctionnement de Kubernetes**
 
-Cf. document "Executive_Summary.md".
+Cf. document "Executive_summary_Dun".
 
 [&#8679;](#top)
 
