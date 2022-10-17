@@ -385,7 +385,7 @@ Comme demandé, j'ai ré-utilisé le script de test de montée en charge du Brie
 
 ### **Executive summary + fonctionnement de Kubernetes**
 
-Cf. document "Executive Summary et fonctionnement de Kubernetes".
+Cf. document "Executive_Summary.md".
 
 [&#8679;](#top)
 
@@ -393,6 +393,6 @@ Cf. document "Executive Summary et fonctionnement de Kubernetes".
 
 ### **Document d'Architecture Technique de l'infrastructure déployée**
 
-Cf. document "DAT".
+Cf. document "DAT.md".
 
 [&#8679;](#top)
