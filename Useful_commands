@@ -8,39 +8,39 @@ kubectl apply -f (name of the yaml file
 `*example : kubectl apply -f azure-vote.yaml*` 
 
 ## Check resources
-kubectl get nodes
-kubectl get pods
-kubectl get svc
-kubectl get deployments
-kubectl get events
-kubectl get secrets
-kubectl get logs
+kubectl get nodes  
+kubectl get pods  
+kubectl get svc  
+kubectl get deployments  
+kubectl get events  
+kubectl get secrets  
+kubectl get logs  
 
 ## Describe resources
-kubectl describe nodes 
-kubectl describe pods
-kubectl describe services # or svc
-kubectl describe deployment # or deploy
-kubectl describe events
-kubectl describe secrets
-kubectl describe logs
-*To specify which resource needs to be described just put the resource ID at the end of the command.* 
-`*example : kubectl describe svc redis-service*`
-*To access to all the logs from all containers :*
-`*kubectl logs podname --all-containers*`
-*To access to the logs from a specific container :*
-`*kubectl logs podname -c containersname*`
-To list all events from a specific pod :*
-`*kubectl get events --field-selector involvedObject.name=podsname*`
+kubectl describe nodes  
+kubectl describe pods  
+kubectl describe services # or svc  
+kubectl describe deployment # or deploy  
+kubectl describe events  
+kubectl describe secrets  
+kubectl describe logs  
+*To specify which resource needs to be described just put the resource ID at the end of the command.*   
+`*example : kubectl describe svc redis-service*`  
+*To access to all the logs from all containers :*  
+`*kubectl logs podname --all-containers*`  
+*To access to the logs from a specific container :*  
+`*kubectl logs podname -c containersname*`  
+To list all events from a specific pod :*  
+`*kubectl get events --field-selector involvedObject.name=podsname*`  
 
 
 ## Delete resources
 
-kubectl delete deploy --all
-kubectl delete svc --all
-kubectl delete pvc --all
-kubectl delete pv --all
-az group delete --name b6duna --yes --no-wait
+kubectl delete deploy --all  
+kubectl delete svc --all  
+kubectl delete pvc --all  
+kubectl delete pv --all  
+az group delete --name b6duna --yes --no-wait  
 
 
 
