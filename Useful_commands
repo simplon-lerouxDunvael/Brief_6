@@ -1,11 +1,12 @@
 ## Create an alias for a command on azure CLi 
-alias WhatWeWant="WhatISChanged"
-`*example : alias k="kubectl"*`
+alias WhatWeWant="WhatISChanged"  
+`*example : alias k="kubectl"*`  
 
 ## Deploy resources with yaml file
-kubectl apply -f (name of the yaml file
-# Deploy application with yaml file
-`*example : kubectl apply -f azure-vote.yaml*` 
+kubectl apply -f (name of the yaml file  
+
+## Deploy application with yaml file  
+`*example : kubectl apply -f azure-vote.yaml*`  
 
 ## Check resources
 kubectl get nodes  
