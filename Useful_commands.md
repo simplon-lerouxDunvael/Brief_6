@@ -76,6 +76,12 @@ kubectl describe certificaterequest
 kubectl describe order  
 kubectl describe challenge  
 
+## Get the IP address to point the DNS to nginx
+k get ingress  
+
+## Activate the autoscaler on an existing cluster
+az aks update --resource-group b6duna --name AKSClusterd2 --enable-cluster-autoscaler --min-count 1 --max-count 8
+
 ## To check the auto scaling creation
 get HorizontalPodAutoscaler  
 *Example of how the results will display :*  
@@ -87,4 +93,4 @@ kubectl get ValidatingWebhookConfiguration -A
 ## Delete Webhook configuration for a role  
 kubectl delete -A ValidatingWebhookConfiguration [rolename]  
 *Example :*  
-`kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission`
+`kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission`  
