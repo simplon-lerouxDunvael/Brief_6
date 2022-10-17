@@ -4,7 +4,7 @@ alias [WhatWeWant]="[WhatIsChanged]"
 `alias k="kubectl"`  
 
 ## To deploy resources with yaml file
-kubectl apply -f [name-of-the-yaml-file] 
+kubectl apply -f [name-of-the-yaml-file]  
 *Example :*  
 `kubectl apply -f azure-vote.yaml`  
 
