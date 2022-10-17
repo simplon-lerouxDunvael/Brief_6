@@ -54,7 +54,7 @@ Infrastructure Plannifiée
 flowchart TD
 
 user(Utilisateurs)
-web{Web}
+web{Internet}
     subgraph AZ [AZURE]
         
         subgraph Cluster [Cluster Kubernetes]
@@ -79,7 +79,7 @@ web{Web}
 
 appGW --> KT-temp2
 KT-temp1 -.-> Stock
-user -.-> web -.-> Nginx --> appGW
+user -.-> |web| web -.-> |web| Nginx --> |web| appGW
 KT-temp1 <--> cluster <--> KT-temp2
 
     classDef rouge fill:#faa,stroke:#f66,stroke-width:3px,color:#002;
