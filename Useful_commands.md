@@ -56,11 +56,11 @@ az group delete --name [resourceGroupName] --yes --no-wait
 
 ## To create a role for Gandi's secret and bind it to the webhook  
 *To create the role :*  
-kubectl create role [role-name] --verb=[Authorised-actions] --resource=[Authorised-resource] 
+kubectl create role [role-name] --verb=[Authorised-actions] --resource=[Authorised-resource]  
 *Example :*  
 `kubectl create role access-secrets --verb=get,list,watch,update,create --resource=secrets`  
 *To bind it :*  
-kubectl create rolebinding --role=[role-name] [role-name] --serviceaccount=[group]:[group-item]
+kubectl create rolebinding --role=[role-name] [role-name] --serviceaccount=[group]:[group-item]  
 *Example :*  
 `kubectl create rolebinding --role=access-secrets default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665665029`
 
