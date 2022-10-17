@@ -240,27 +240,27 @@ Pour créer un compte de stockage and le partage de fichiers (fileshare) j'ai ut
 
 ### **Configuration d'un Persistent Volume et d'un P.V. Claim**
 
-[Multiple Nodes](https://stackoverflow.com/questions/54845025/does-kubernetes-support-persistent-volumes-shared-between-multiple-nodes-in-a-cl)
+[Nodes Multiple](https://stackoverflow.com/questions/54845025/does-kubernetes-support-persistent-volumes-shared-between-multiple-nodes-in-a-cl)
 
-[AKS Multiple Nodes](https://learn.microsoft.com/fr-fr/azure/aks/azure-files-volume)
+[Nodes Multiple AKS](https://learn.microsoft.com/fr-fr/azure/aks/azure-files-volume)
 
-[AKS Storage](https://learn.microsoft.com/en-us/azure/aks/concepts-storage)
+[Stockage AKS](https://learn.microsoft.com/en-us/azure/aks/concepts-storage)
 
-[AKS Storage Driver](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers)
+[Pilote de stockage AKS](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers)
 
-[AKS Azure file claim](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume#mount-file-share-as-an-persistent-volume)
+[Revendication du fichier Azure AKS](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume#mount-file-share-as-an-persistent-volume)
 
-[Create PV](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume)
+[Créer le PV](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume)
 
-Once the Fileshare created and associated to Storage Account, we create the PV and assign it with a PVC. As it's dedicated to Redis, we added it at the end of the .yaml file.
+Une fois le partage de fichier créé et associé au compte de stockage, j'ai créé le volume persistant (PV) que j'ai assigné à un PVC (PV claim) et ajouté à la fin du fichier .yaml (car dédié à Redis).
 
-To do so though, we need to give access to the Storage Account with a K8s secret using this command:
+Pour réaliser toutes ces étapes, j'ai donné accès au compte de stockage à l'aide d'un secret Kubernetes en utilisant la commande suivante :
 
 ```bash
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=b6lstorageacc --from-literal=azurestorageaccountkey=JBsbcnoq7ufOg+DJ45B6KN4YNow8GkHhjQHaJfyzn5DyVW9eU0mDfWTpUqMCEKDPWc0HZRyesp5s+AStmP212A==
+kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=L7GPm1jVwpKEHiJino8OJ9CssGmTLhn6DO3W0Wq2VUo2M0R1LWsQIENZEW91TfFTM4NZJm/ZiPjX+AStbpfbEA==
 ```
 
-[Red-Vote.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/Red-Vote.yaml)
+[Red-Vote.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/azure-vote-part1-final.yaml)
 
 [&#8679;](#top)  
 
