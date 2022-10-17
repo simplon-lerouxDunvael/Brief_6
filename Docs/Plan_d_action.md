@@ -357,7 +357,13 @@ Les documentations suivantes ont été utilisées pour l'auto-scaling horizontal
 
 [Autoscaling Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 
-J'ai ainsi créé le fichier [autoscaling.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/autoscaling.yaml), que j'ai appliqué à mon Cluster existant.
+J'ai tout d'abord activé l'auto-scaler pour mon cluster.
+
+```bash
+az aks update --resource-group b6duna --name AKSClusterd2 --enable-cluster-autoscaler --min-count 1 --max-count 8
+```
+
+Puis, j'ai créé le fichier [autoscaling.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/autoscaling.yaml) que j'ai appliqué à mon cluster.
 
 [&#8679;](#top)
 
