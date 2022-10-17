@@ -1,5 +1,5 @@
 ## To create an alias for a command on azure CLi 
-alias [WhatWeWant]="[WhatISChanged]"  
+alias [WhatWeWant]="[WhatIsChanged]"  
 *Example :*  
 `alias k="kubectl"`  
 
