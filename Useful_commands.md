@@ -5,9 +5,8 @@ alias [WhatWeWant]="[WhatIsChanged]"
 
 ## To deploy resources with yaml file
 kubectl apply -f [name-of-the-yaml-file] 
-
-## To deploy application with yaml file  
-`Example : kubectl apply -f azure-vote.yaml`  
+*Example :*  
+`kubectl apply -f azure-vote.yaml`  
 
 ## To check resources
 kubectl get nodes  
