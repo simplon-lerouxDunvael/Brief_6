@@ -18,7 +18,7 @@ kubectl get secrets
 kubectl get logs  
 *To keep verifying the resources add --watch at the end of the command :*  
 *Example :*  
-`kubectl get services --watch` 
+`kubectl get services --watch`  
 *To check the resources according to their namespace, add --namespace after the command and the namespace's name :*  
 *Example :*  
 `kubectl get services --namespace [namespace's-name]`
