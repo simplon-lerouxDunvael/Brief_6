@@ -78,7 +78,7 @@ kubectl describe challenge
 
 ## To check the auto scaling creation
 get HorizontalPodAutoscaler  
-*Example of how the results will display*  
+*Example of how the results will display :*  
 `horizontalpodautoscaler.autoscaling/scaling-voteapp created`
 
 ## To check Webhook configuration
