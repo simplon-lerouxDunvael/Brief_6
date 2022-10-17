@@ -114,20 +114,20 @@ KT-temp1 <--> cluster <--> KT-temp2
 | :--------: | :--------: | :--------: | :--------: |
 | Azure service | ✓ | ✓ | ✓ |
 | ressource groupe | ✓ |✓ | ✓ |
-| SSH (port) | ✗ | 6379 | 80 |
-| CPU | ✗ | 100m-250m | 100m-250m |
-| Mémoire | ✗ | 128mi-256mi | 128mi-256mi |
-| Image | ✗ | redis:latest  | whujin11e/public:azure_voting_app |
-| Load Balancer | ✗ | ✓ puis ✗ | ✓ |
-| ClusterIP | ✗ | ✗ puis ✓ | ✗ |
+| SSH (port) | N/A | 6379 | 80 |
+| CPU | N/A | 100m-250m | 100m-250m |
+| Mémoire | N/A | 128mi-256mi | 128mi-256mi |
+| Image | N/A | redis:latest  | whujin11e/public:azure_voting_app |
+| Load Balancer | N/A | ✓ puis ✗ | ✓ |
+| ClusterIP | N/A | ✗ puis ✓ | ✗ |
 | Kebernetes secret | ✓ | ✓ | ✓ |
 | Storage secret | ✓ | ✓ | ✓ |
-| Storage account (Standard LRS) | ✗ | ✓ | ✓ |
-| Persistent Volume | ✗ | ✓ | ✗ |
-| Persistent Vol. Claim (3Gi)| ✗ | ✓ | ✗ |
+| Storage account (Standard LRS) | N/A | ✓ | ✓ |
+| Persistent Volume | N/A | ✓ | ✗ |
+| Persistent Vol. Claim (3Gi)| N/A | ✓ | ✗ |
 | Ingress | ✓ | ✗ | ✓ |
 | Nginx| ✓ | ✗ | ✗ |
-| Certificat TLS | ✗ | ✗ | ✓ |
+| Certificat TLS | N/A | ✗ | ✓ |
 | Auto-scaling | ✗ | ✗ | ✓ |
 
 [&#8679;](#top)  
