@@ -128,7 +128,7 @@ KT-temp1 <--> cluster <--> KT-temp2
 | Ingress | ✓ | ✗ | ✓ |
 | Nginx| ✓ | ✗ | ✗ |
 | Certificat TLS | N/A | ✗ | ✓ |
-| Auto-scaling | ✗ | ✗ | ✓ |
+| Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
 [&#8679;](#top)  
 
