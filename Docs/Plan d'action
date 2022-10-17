@@ -54,32 +54,32 @@ Infrastructure Plannifiée
 flowchart TD
 
 user(Utilisateurs)
-
+web{Web}
     subgraph AZ [AZURE]
         
         subgraph Cluster [Cluster Kubernetes]
-            appGW(Load Balancer)
-            cluster(Cluster IP)
-            Nginx(Ingress)
+            appGW{{Load Balancer}}
+            cluster{{Cluster IP}}
+            Nginx{{Ingress}}
 
             subgraph n1 [Node 1]
-                KT-temp1(Redis)
+                KT-temp1((Redis))
             end
 
             subgraph n2 [Node 2]
-                KT-temp2(Voting App)
+                KT-temp2((Voting App))
             end
         end
 
         subgraph BDD [Stockage Redis]
-            Stock(Persistent Volume Claim)
+            Stock[(Persistent Volume Claim)]
         end
 
     end
 
 appGW --> KT-temp2
 KT-temp1 -.-> Stock
-user -.-> Nginx --> |Web| appGW
+user -.-> web -.-> Nginx --> appGW
 KT-temp1 <--> cluster <--> KT-temp2
 
     classDef rouge fill:#faa,stroke:#f66,stroke-width:3px,color:#002;
@@ -89,13 +89,13 @@ KT-temp1 <--> cluster <--> KT-temp2
     classDef fuschia fill:#f0f,stroke:#c0d,stroke-width:2px,color:#003;
     class BDD, fuschia;
     classDef vert fill:#ad5,stroke:#ad5,stroke-width:2px,color:#003;
-    class appGW,cluster, vert;
+    class appGW,cluster,Nginx, vert;
     classDef rose fill:#faf,stroke:#faf,stroke-width:2px,color:#003;
     class Stock, rose;
     classDef jaune fill:#fe5,stroke:#fe5,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
     class user, jaune;
     classDef blanc fill:#eff,stroke:#eff,stroke-width:2px,color:#003;
-    class Nginx, blanc;
+    class web, blanc;
     classDef gris fill:#bab,stroke:#bab,stroke-width:2px,color:#003;
     class n1,n2, gris;
     classDef bleugris fill:#bbe,stroke:#bbe,stroke-width:2px,color:#003;
