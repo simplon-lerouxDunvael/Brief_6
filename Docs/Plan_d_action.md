@@ -262,6 +262,8 @@ kubectl create secret generic storage-secret --from-literal=azurestorageaccountn
 
 [azure-vote-part2-final.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/azure-vote-part1-final.yaml)
 
+*J'ai créé un fichier .yaml nommé [delete.sh](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/delete.sh) qui m'a permis de supprimer les ressources après les différents tests des commandes.*
+
 [&#8679;](#top)  
 
 <div id='Ingress'/> 
@@ -368,6 +370,8 @@ Comme demandé, j'ai ré-utilisé le script de test de montée en charge du Brie
 [graph_loadtest.py](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/graph_loadtest.py)
 
 ![auto_scaling_succeeded](https://user-images.githubusercontent.com/108001918/196206752-b57b8586-dd62-4c68-bedf-dbcf5e237fbf.png)
+
+*J'ai créé un fichier .yaml nommé [delete2.sh](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/delete2.sh) qui m'a permis de supprimer les ressources après les différents tests des commandes.*
 
 [&#8679;](#top)
 
