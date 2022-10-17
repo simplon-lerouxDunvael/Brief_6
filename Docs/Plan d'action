@@ -130,6 +130,9 @@ KT-temp1 <--> cluster <--> KT-temp2
 | Certificat TLS | N/A | ✗ | ✓ |
 | Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
+ID Subscription : 
+a1f74e2d-ec58-4f9a-a112-088e3469febb
+
 [&#8679;](#top)  
 
 <div id='ClusterAKS'/>   
