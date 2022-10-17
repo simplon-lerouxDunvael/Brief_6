@@ -38,7 +38,7 @@ kubectl describe logs
 `kubectl logs podname --all-containers`  
 *To access to the logs from a specific container :*  
 `kubectl logs podname -c [container's-name]`  
-To list all events from a specific pod :*  
+*To list all events from a specific pod :*   
 `kubectl get events --field-selector [involvedObject].name=[podsname]`  
 
 ## To delete resources
