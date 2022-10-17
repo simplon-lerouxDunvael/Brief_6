@@ -8,8 +8,7 @@
 ### [2 - Topologie de l'infrastructure](#Topologie)
 ### [3 - Liste ressources](#Ressources)
 ### [4 - Déploiement d'un cluster AKS avec deux nodes](#ClusterAKS)
-### [5 - Déploiement de Redis](#Redis)
-### [6 - Déploiement de Voting App](#VotingApp)
+### [5 - Déploiement de Redis et de la Voting App](#RedisVotApp)
 ### [7 - Déploiement d’un Load Balancer](#LB)
 ### [8 - Application d'un ClusterIP pour Redis](#ClusterIP)
 ### [9 - Configuration d'un mot de passe pour le container Redis](#MDP)
@@ -34,7 +33,7 @@ Compte-rendu quotidien immédiat et désignation des premières tâches du jour.
 
 Réunions hebdomadaires avec les autres membres de la formations afin de déterminer les difficultés, facilités et avancées de chacun.  
 
-[scrums](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/M%C3%A9thodologie%20Scrum.md)
+[scrums](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/M%C3%A9thodologie_Scrum.md)
 
 [&#8679;](#top)  
 
@@ -142,89 +141,105 @@ a1f74e2d-ec58-4f9a-a112-088e3469febb
 
 04.    **Déploiement d'un cluster AKS avec deux nodes**
 
+[***Tutorial***](https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli)
+
+```bash
+az aks create -g b6duna -n AKSClusterd --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
+```
+##### Connexion au Cluster
+
+```bash
+az aks get-credentials --resource-group b6duna --name AKSClusterd
+```
+
 [&#8679;](#top)  
 
-<div id='Redis'/>  
+<div id='RedisVotApp'/>  
 
-05.    **Déploiement de Redis**
+05.    **Déploiement de Redis et de la Voting App**
 
-[&#8679;](#top)  
+[***Tutorial***](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli#code-try-7)
 
-<div id='VotingApp'/>  
+A l'aide de la documentation ci-dessus, j'ai déployé les images de Redis et de la Voting App ainsi que leurs services respectifs à partir d'un même fichier .yaml.
 
-06.    **Déploiement de Voting App**
+[Redis & Voting along with their dedicated services](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/azure-vote-part1-final.yaml)
+
+```bash
+azure-vote-part1-final.yaml
+```
+
 
 [&#8679;](#top)  
 
 <div id='LB'/>  
 
-07.    **Déploiement d’un Load Balancer**
+1.     **Déploiement d’un Load Balancer**
 
 [&#8679;](#top)  
 
 <div id='ClusterIP'/>  
    
-08.    **Application d'un ClusterIP pour Redis**
+1.     **Application d'un ClusterIP pour Redis**
 
 [&#8679;](#top)  
 
 <div id='MDP'/>  
 
-09.    **Configuration d'un mot de passe pour le container Redis**
+1.     **Configuration d'un mot de passe pour le container Redis**
 
 [&#8679;](#top)  
 
 <div id='Secret'/>  
 
-10.    **Création d'un secret Kubenetes**
+1.     **Création d'un secret Kubenetes**
 
 [&#8679;](#top)  
 
 <div id='Stockage'/>  
 
-11.    **Création d'un compte de stockage**
+1.     **Création d'un compte de stockage**
 
 [&#8679;](#top)  
 
 <div id='PVC'/>  
 
-12.    **Configuration d'un Persistent Volume et d'un P.V. Claim**
+1.     **Configuration d'un Persistent Volume et d'un P.V. Claim**
 
 [&#8679;](#top)  
 
 <div id='Ingress'/> 
 
-13.    **Création d'Ingress controller avec Kubernetes/nginx**
+1.     **Création d'Ingress controller avec Kubernetes/nginx**
     
 [&#8679;](#top)
 
 <div id='Gandi'/> 
 
-14.    **Création d'un enregistrement DNS sur Gandi**
+1.     **Création d'un enregistrement DNS sur Gandi**
 
 [&#8679;](#top)
 
 <div id='Certificat'/> 
 
-15.    **Création d'un certificat TLS avec cert-manager pour la Voting App**
+1.     **Création d'un certificat TLS avec cert-manager pour la Voting App**
 
 [&#8679;](#top)
 
 <div id='Auto-scaling'/> 
 
-16.    **Auto-scaling horizontal de la Voting App**
+1.     **Auto-scaling horizontal de la Voting App**
 
 [&#8679;](#top)
 
 <div id='Charge'/> 
 
-17.    **Test de la montée en charge**
+1.     **Test de la montée en charge**
 
 [&#8679;](#top)
 
 <div id='Summary'/>  
 
-18.    **Executive summary + fonctionnement de Kubernetes**
+1.     **Executive summary + fonctionnement de Kubernetes**
 
 Cf. document "Executive Summary et fonctionnement de Kubernetes".
 
@@ -232,7 +247,7 @@ Cf. document "Executive Summary et fonctionnement de Kubernetes".
 
 <div id='DAT'/> 
 
-19. **Document d'Architecture Technique de l'infrastructure déployée**
+1.  **Document d'Architecture Technique de l'infrastructure déployée**
 
 Cf. document "DAT".
 
