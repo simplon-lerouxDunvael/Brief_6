@@ -1,51 +1,45 @@
-# Document d'architecture technique.
-## Besoins fonctionnels.
-Les utilisateurs doivent pouvoir voter sur l'application votingApp.
-- votingApp doit être hautement disponible.
+# Technical Architectural Document
+## Functions requirements
+Users needs to be able to vote and reset votes on the Voting App application and Voting App needs to be highly available.
 
-## Besoins non-fonctionnels.
-| Element | Valeur | Commentaires |
+## Non-functionnal Needs
+| Element | Value | Comments |
 | ------- | ------ | ------------ |
-| Provider | Azure | Choix stratégique |
-| Service | AKS | Choix stratégique |
-| Gateway | Ingress | |
-| Serveur | Nginx |
-| BDD | Redis | |
-| Application | VotingApp | Doit pouvoir scaleout et disposer d'un nom de domaine |
+| Provider | Azure | - Value and cost-effectiveness <br> - Compatibility <br> - Security |
+| Service | AKS | - Auto upgrades <br> - Patching <br> - Self-healing |
+| Gateway | Ingress | Integrated in AKS |
+| BDD | Redis | - Good performance, low latency <br> - Flexible data structures <br> - Open Source |
+| Application | VotingApp | Required and needs to be able to scale horizontally and have a single domain name |
 
-## Représentation fonctionnelle.
-![](diagram.jpg)
+## Function Schematic
+![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/DAT%20Diagram%201.png)
 
-### Listes des environnements.
+### Environment list
 | Nom | Type | Caractéristiques |
 | --- | ---- | ---------------- |
-| Azure | Provider | |
-| aks | Kubernetes Cluster | Cluster k8s Azure |
+| Azure | Provider | Public Cloud |
+| AKS | Kubernetes Cluster | Cluster K8s Azure |
 
-## Représentation applicative.
-![](diagram2.jpg)
+## Applicative Schematic
+![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/DAT%20Diagram%202.png)
 
-### La matrice de flux.
-| Source | Réseau | Destination | Protocol | Port |
-|------------- | ------ | ----------- | -------- | ---- |
-| Ingress Gateway | virutal-network | Service votingApp | TCP | 80 |
-| Service votingApp | virutal-network | Pods votingApp | TCP | 80 |
-| Service Redis  | virutal-network | Pod Redis | TCP | 6379 |
-| Service votingApp | virtual-network | Service Redis | TCP | 6379 |
-## Représentation infrastructure.
-![](diagram3.jpg)
-## Représentation opérationnelle.
-![](diagram4.jpg)
-## Décision d'architecture.
-| Sujet | Contenue |
-| ----- | -------- |
-| Décision d'architecture | Utilisation d'un gateway |
-| Problématique | Quels Gateway utiliser ? |
-| Hypothése | L'application utilise une gateway |
-| Alternative | Option 1 : Utilisation de Ingress dans kubernetes <br> Option 2: Utilisation de la gateway Azure |
-| Decision | Option 1 |
-| Justification | L'daptation sur d'autre cloud provider |
-| Implication | Génération et implémentation du certificat TLS avec kubernetes |
-
-
-
+### Network Flux Matrix
+| Source | Destination | Protocol | Port |
+|------------- | ----------- | -------- | ---- |
+| Ingress Gateway | Service votingApp | TCP | 80 |
+| Service votingApp | Pods votingApp | TCP | 80 |
+| Pods votingApp | Service votingApp | TCP | 80 |
+| Service votingApp | Service Redis | TCP | 6379 |
+| Service Redis  | Pod Redis | TCP | 6379 |
+## Architecture Schematic
+![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/Cloud%20Architecture%202.png)
+## Architecture Decisions
+| Topic | Content |
+| ----------------------- | ------------------------ |
+| Architecture Decision | Use of a Gateway |
+| Problem | What Gateway to use? |
+| Hypothesis | Use of Application Gateway |
+| Alternatives | A: Use of Azure Application Gateway <br> B: Use of Ingress in Kubernetes |
+| Decision | Option B is selected |
+| Reasoning | 1- Easier potential transition to another public cloud provider <br> 2- Less dependant on Azure specific infrastructure and services |
+| Implication | Generation and incorporation of the TLS certificate within Kubernetes |
