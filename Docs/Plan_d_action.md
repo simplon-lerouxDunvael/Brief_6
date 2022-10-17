@@ -19,7 +19,7 @@
 ### [14 - Création d'un enregistrement DNS sur Gandi](#Gandi)
 ### [15 - Création d'un certificat TLS avec cert-manager pour la Voting App](#certificat)
 ### [16 - Auto-scaling horizontal de la Voting App](#Auto-scaling)
-### [17 - Test de la montée en charge](#Charge)
+### [17 - Test de montée en charge](#Charge)
 ### [18 - Executive summary + fonctionnement de Kubernetes](#Summary)
 ### [19 - Document d'Architecture Technique de l'infrastructure déployée](#DAT)
 
@@ -260,7 +260,7 @@ Pour réaliser toutes ces étapes, j'ai donné accès au compte de stockage à l
 kubectl create secret generic storage-secret --from-literal=azurestorageaccountname=b6dredisstockacc --from-literal=azurestorageaccountkey=L7GPm1jVwpKEHiJino8OJ9CssGmTLhn6DO3W0Wq2VUo2M0R1LWsQIENZEW91TfFTM4NZJm/ZiPjX+AStbpfbEA==
 ```
 
-[Red-Vote.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/azure-vote-part1-final.yaml)
+[azure-vote-part2-final.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_1/azure-vote-part1-final.yaml)
 
 [&#8679;](#top)  
 
@@ -270,23 +270,20 @@ kubectl create secret generic storage-secret --from-literal=azurestorageaccountn
 
 ### **Création d'Ingress controller avec Kubernetes/nginx**
 
-```bash
-az aks create -g b6luna -n KlusterLuna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
-```
-
-And relink it.
+Après avoir supprimé mon premier Cluster, j'en ai créé un nouveau avec quatre nodes et ses secrets Kubernetes.
 
 ```bash
-az aks get-credentials --resource-group b6luna --name KlusterLuna
+az aks create -g b6duna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
 ```
 
-### **Creation of Ingress Controller with Kubernetes Nginx**
+```bash
+az aks get-credentials --resource-group b6duna --name AKSClusterd2
+```
+Afin de bien séparer les différentes étapes et ayant rencontré des difficultés liées à la création d'Ingress controller avec Nginx (et à la documentation), j'ai créé plusieurs fichiers de configuration pour ingress.
 
-I got quite some issues with the ingress as it seemed to have conflicts with previous config files that weren't deleted properly. So I had to use multiple configuration files for my ingress. The main one being:
+[ingress.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/ingress.yaml)
 
-[ingress.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/ingress.yaml)
-
-Note that unlike what the doc state, you do not require an ACR on Azure to set it up.
+*Contrairement à ce que la documentation Azure préconise, Azure ACR n'est pas nécessaire pour l'Ingress controller avec Nginx.*
     
 [&#8679;](#top)
 
@@ -294,7 +291,7 @@ Note that unlike what the doc state, you do not require an ACR on Azure to set i
 
 ### **Création d'un enregistrement DNS sur Gandi**
 
-Once the ingress connected, we linked it on Gandi to access it with DNS.
+Une fois l'ingress connecté, j'ai configuré ma zone DNS afin qu'elle pointe vers l'ingress via un enregistrement DNS.
 
 [&#8679;](#top)
 
@@ -302,37 +299,36 @@ Once the ingress connected, we linked it on Gandi to access it with DNS.
 
 ### **Création d'un certificat TLS avec cert-manager pour la Voting App**
 
-Once that done, we use Jetstack Gandi Cert-Manager Webhook
+Puis, j'ai utilisé le Cert-Manager Jetstack Webhook de Gandi  pour créer un certificat TLS pour la Voting App.
 
 [jetstack](https://github.com/bwolf/cert-manager-webhook-gandi)
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io
 ```
-
-Careful on the tutorial there, the version number isn't the latest. Be sure to check it prior to apply. At this day, 1.9.1 is the latest, not 1.5.4.
+*Attention : à ce jour, la dernière version est la 1.9.1 (pas la 1.5.4).*
 
 ```bash
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true --version v1.9.1 --set 'extraArgs={--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
 ```
 
-##### Set Gandi-credentials in a K8s secret
+##### Configuration des identifiants Gandi dans un secret Kubernetes
 
-For that to be recognized and working, we need to create a K8s secret with the API token as a secret.
+J'ai ensuite créé un secret Kubernetes avec le Token API de ma zone DNS afin que le certificat TLS soit reconnu et fonctionne.
 
 ```bash
 kubectl create secret generic gandi-credentials --namespace cert-manager --from-literal=api-token='[API TOKEN]'
 ```
 
-##### Install Cert-manager webhook for Gandi
+##### Installation du Cert-manager webhook pour Gandi
 
 ```bash
 helm install cert-manager-webhook-gandi --repo https://bwolf.github.io/cert-manager-webhook-gandi --version v0.2.0 --namespace cert-manager --set features.apiPriorityAndFairness=true  --set logLevel=6 --generate-name
 ```
 
-##### create secret role and bind for webhook
+##### Création du rôle pour le secret and assignation à Webhook
 
-For the cert-manager webhook to access it properly, we need a role and to bind that role to the cert-manager.
+Pour que le cert-manager Webhook accède au certificat TLS, un rôle est nécessaire et doit être assigné au cert-manager.
 
 ```bash
 kubectl create role access-secret --verb=get,list,watch,update,create --resource=secrets
@@ -341,16 +337,11 @@ kubectl create role access-secret --verb=get,list,watch,update,create --resource
 kubectl create role [role-name] --verb=[Authorised-actions] --resource=[Authorised-resource]
 
 ```bash
-kubectl create rolebinding --role=access-secret default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665664967
+kubectl create rolebinding --role=access-secrets default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665665029
 ```
+Puis, j'ai appliqué le fichier .yaml (comme expliqué dans la documentation [jetstack](https://github.com/bwolf/cert-manager-webhook-gandi)).
 
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/cert-manager_%26_roles.png)
-
-Then apply .yaml as instructed:
-
-[ingress.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/ingress.yaml) -> [letsencrypt-issuer.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/letsencrypt-issuer.yaml) -> [certificate.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/certif-space.yaml)
-
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/Ingress_%26_DNS_%26_TLS.png)
+[ingress.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/ingress.yaml) -> [issuer.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/issuer.yaml) -> [certif-space-com.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/certif-space-com.yaml)
 
 [&#8679;](#top)
 
@@ -358,29 +349,25 @@ Then apply .yaml as instructed:
 
 ### **Auto-scaling horizontal de la Voting App**
 
-For the Horizontal Auto-scaling of Voting App, I used these turotials:
+Les documentations suivantes ont été utilisées pour l'auto-scaling horizontal de la Voting App.
 
 [Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 
 [Autoscaling Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 
-After thoroughly reading them, I created the following .yaml and applied to the already functionning cluster.
-
-[Autoscaling-vote.yaml](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part2/Autoscaling-vote.yaml)
+J'ai ainsi créé le fichier [autoscaling.yaml](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/autoscaling.yaml), que j'ai appliqué à mon Cluster existant.
 
 [&#8679;](#top)
 
 <div id='Charge'/> 
 
-### **Test de la montée en charge**
+### **Test de montée en charge**
 
-As instructed, I re-used the load-testing script we used in the previous brief, using the live-checking and live-graphing script to heavily stress the servers, of course, after setting it properly to the new address and install.
+Comme demandé, j'ai ré-utilisé le script de test de montée en charge du Brief 4 que j'ai paramétré avec la nouvelle adresse de la Voting App. Cela m'a permis de vérifier en temps réèl le stress occasionné sur les serveurs. Le graphique en temps réèl apporte un rendu visuel de la montée en charge.
 
-[graph_loadtest.py](https://github.com/Simplon-Luna/b6_Luna/blob/main/graph_loadtest.py)
+[graph_loadtest.py](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Part_2/graph_loadtest.py)
 
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/Post_1st_Loadtest.png)
-
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/Post_2nd_Loadtest.png)
+![auto_scaling_succeeded](https://user-images.githubusercontent.com/108001918/196206752-b57b8586-dd62-4c68-bedf-dbcf5e237fbf.png)
 
 [&#8679;](#top)
 
