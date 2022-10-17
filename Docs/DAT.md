@@ -12,7 +12,7 @@ Users needs to be able to vote and reset votes on the Voting App application and
 | Application | VotingApp | Required and needs to be able to scale horizontally and have a single domain name |
 
 ## Function Schematic
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/DAT%20Diagram%201.png)
+![ ](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Pics/DAT%20Diagram%201.png)
 
 ### Environment list
 | Nom | Type | Caractéristiques |
@@ -21,7 +21,7 @@ Users needs to be able to vote and reset votes on the Voting App application and
 | AKS | Kubernetes Cluster | Cluster K8s Azure |
 
 ## Applicative Schematic
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/DAT%20Diagram%202.png)
+![ ](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Pics/DAT_Diagram_2.png)
 
 ### Network Flux Matrix
 | Source | Destination | Protocol | Port |
@@ -32,7 +32,7 @@ Users needs to be able to vote and reset votes on the Voting App application and
 | Service votingApp | Service Redis | TCP | 6379 |
 | Service Redis  | Pod Redis | TCP | 6379 |
 ## Architecture Schematic
-![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/Cloud%20Architecture%202.png)
+![ ](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Pics/Cloud%20Architecture%202.png)
 ## Architecture Decisions
 | Topic | Content |
 | ----------------------- | ------------------------ |
