@@ -46,7 +46,7 @@ kubectl delete deploy --all
 kubectl delete svc --all  
 kubectl delete pvc --all  
 kubectl delete pv --all  
-az group delete --name b6duna --yes --no-wait  
+az group delete --name [resourceGroupName] --yes --no-wait  
 
 ## To create a repository Helm and install Jetstack  
 *To create the repository and install Jetstack :*  
