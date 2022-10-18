@@ -128,7 +128,8 @@ KT-temp1 <--> cluster <--> KT-temp2
 | Persistent Volume | N/A | ✓ | ✗ |
 | Persistent Vol. Claim (3Gi)| N/A | ✓ | ✗ |
 | Ingress | ✓ | ✗ | ✓ |
-| Nginx| ✓ | ✗ | ✗ |
+| Nginx | ✓ | ✗ | ✗ |
+| DNS | ✓ | N/A | ✓ |
 | Certificat TLS | N/A | ✗ | ✓ |
 | Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
