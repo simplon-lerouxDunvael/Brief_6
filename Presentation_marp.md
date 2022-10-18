@@ -29,7 +29,7 @@ Dunvael
 6 - Compréhension des outils et des logiciels
 7 - Difficultés rencontrées
 8 - Solutions trouvées
-9 - Bonus
+9 - DAT et Executive Summary
 
 
 <!-- paginate: true -->
@@ -124,8 +124,7 @@ _color: black
 ## 5 - Tâches supplentées
 
 Certaines tâches de la partie 2 du Brief 6 ont été supplentées afin de palier le manque de temps et permettre de réaliser les bonus.
-* App Gateway
-* Agic-on
+* App Gateway avec Agic-on
 * Certbot
 
 <!--
@@ -134,12 +133,11 @@ _color: black
 
 ---
 ## 6 - Compréhension des outils et des logiciels
-***Terraform*** = 
-* outil organisé qui convient pour déployer pas à pas une infrastructure et des applications.
-* construction d'un plan prédéfini des étapes qui vont se réaliser en parallèle avec des messages d'erreur détaillés et précis.
-* permet de configurer et paramétrer toutes les étapes d'une infrastructure.
-* compatible avec d'autres logiciels et plateformes
-* un interpréteur qui reçoit du code et le transforme en différentes commandes.
+***Kubernetes*** = 
+* Plateforme de déploiement et de gestion d’infrastructures résilientes, auto-réparatrices et à haute disponibilité.
+Possibilité d’augmenter ou de réduire le nombre de ressources (haute modulabilité).
+* Création de pools de nodes dans un cluster. Chaque node ayant son Kubelet agissant comme proxy pour les pods présents en leur sein.
+* Le DNS intégré permet aux services de communiquer avec les pods. Ceux-ci communiquent également entre eux grâce aux Kubelets et à leurs services attribués.
 
 <!--
 _color: black
@@ -147,12 +145,10 @@ _color: black
 
 ---
 
-***Ansible*** = 
-* fichier père qui va appeler plusieurs fichiers fils pour chaque fonction voulue. 
-* Il faut un fichier différent pour chaque étape.
-* un programme qui permet d'automatiser des tâches.
-* prend en entrée une liste d'actions dans l'ordre au format YAML (pas un résultat fini comme terraform)
-* il exécute du code python en sortie = des possibilités infinies car l'utilisateur peut installer des collections (pleins de fonctions qu'Ansible va pouvoir exécuter).
+***Ingress*** = 
+* L'Ingress (ou entrée réseau), intégré à Kubernetes, expose les routes HTTP et HTTPS de l'extérieur du cluster à des services au sein du cluster. 
+* Le routage du trafic est contrôlé par des règles définies sur la ressource Ingress.
+* Un Ingress peut être configuré pour donner aux services des URLs HTTPS accessibles de l'extérieur, un load balancer et un DNS. Un contrôleur d'Ingress est responsable de l'exécution de l'Ingress.
 
 <!--
 _color: black
@@ -160,11 +156,12 @@ _color: black
 
 ---
 ## 6 - Difficultés  rencontrées
-Nous avons rencontré plusieurs difficultés : communes et individuelles.
+J'ai rencontré plusieurs difficultés :
 
-* Prioriser les différentes étapes du script en fonction de leurs pré-requis
-* Rechercher et analyser de la documentation (Ansible mal rédigée, Ansible et Azure presque incompatibles, mauvaise adaptabilité et flexibilité du logiciel d'ansible, documentations pas à jour)
-* Trier les informations, les gérer et les assembler
+* Certaines documentations Kubernetes n'étant pas à jour les informations sur les pré-requis étaient difficiles à vérifier
+* Comprendre dans les manifests .yaml où pointe quoi (matchlabels, services, ...)
+* Un temps de brief réduit par des interventions externes et des contre-temps
+* Des difficultés pour réaliser le DAT et l'executive summary car objectif flou
 
 <!--
 _color: black
@@ -172,30 +169,28 @@ _color: black
 
 ---
 ## 7 - Solutions trouvées 
-Afin de palier aux difficultés, nous avons cherché des solutions, nous sommes remis en question et avons adoptés différents comportements :
+Afin de palier aux difficultés, j'ai cherché des solutions, me suis remise en question et ai adopté différents comportements :
 
-* scrums quotidiens
-* écoute active 
-* communication permanente 
-* des temps/moments dédiés
-=> ont permis d'apprendre à travailler ensemble de manière optimale et convenable pour tous les membres du groupe. 
-
-<!--
-_color: black
--->
----
-## 8 - Bonus
-
-Example de nos courbes graphiques en temps réel
-&nbsp;&nbsp;&nbsp;&nbsp;![width:1100px height:500px](https://user-images.githubusercontent.com/108002178/192768326-e169f53b-b6e8-422c-983c-d68fafe29c15.jpg)
+* Communications avec les autres membres de la formation
+* Des temps de pause (câlins et bisous au chaton par exemple ou pause ferrero)
 
 <!--
 _color: black
 -->
 
 ---
+## 8 - DAT et Executive Summary
 
-&nbsp;&nbsp;&nbsp;&nbsp;![width:1100px height:600px](https://user-images.githubusercontent.com/108002178/192768327-7a2c27bd-5b2f-48ac-9b6e-af83723e7f95.jpg)
+[Document d'Architecture Technique](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/DAT.md)
+
+[Executive summary](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/Executive_summary_Dun.pdf)
+
+<!--
+_color: black
+-->
+
+---
+
 
 <!--
 _color: black
