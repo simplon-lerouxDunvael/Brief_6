@@ -25,10 +25,11 @@ Dunvael
 2 - Topologie
 3 - Nombre de scripts
 4 - Plan projet prévu VS plan projet exécuté
-5 - Compréhension des outils et des logiciels
-6 - Difficultés rencontrées
-7 - Solutions trouvées
-8 - Bonus
+5 - Tâches supplentées
+6 - Compréhension des outils et des logiciels
+7 - Difficultés rencontrées
+8 - Solutions trouvées
+9 - Bonus
 
 
 <!-- paginate: true -->
@@ -95,13 +96,24 @@ _color: black
 |  | *Plan projet prévu* | *Plan projet exécuté* |
 |-----------|:----------:|:------------:|
 | Persistent Volume |&#9745;|&#9745;|
+| Persistent Volume Claim |&#9745;|&#9745;|
 | Ingress |&#9745;|&#9745;|
 | Nginx |&#9745;|&#9745;|
+| Cert-manager |&#9745;|&#9745;|
 | Certificat TLS |&#9745;|&#9745;|
 | DNS |&#9745;|&#9745;|
-| Script de montée en charge |&#9745;|&#9745;|
-|  |&#9745;|&#9744;|
-| Documentation Terraform |&#9745;|&#9745;|
+| Load tester |&#9745;|&#9745;|
+<!--
+_color: black
+-->
+
+--- 
+
+|  | *Plan projet prévu* | *Plan projet exécuté* |
+|-----------|:----------:|:------------:|
+| Executive summary |&#9745;|&#9745;|
+| DAT |&#9745;|&#9745;|
+| Explications fonctionnement Kubernetes |&#9745;|&#9745;|
 | Méthodologie Scrum |&#9745;|&#9745;|
 
 <!--
@@ -109,7 +121,19 @@ _color: black
 -->
 
 ---
-## 5 - Compréhension des outils et des logiciels
+## 5 - Tâches supplentées
+
+Certaines tâches de la partie 2 du Brief 6 ont été supplentées afin de palier le manque de temps et permettre de réaliser les bonus.
+* App Gateway
+* Agic-on
+* Certbot
+
+<!--
+_color: black
+-->
+
+---
+## 6 - Compréhension des outils et des logiciels
 ***Terraform*** = 
 * outil organisé qui convient pour déployer pas à pas une infrastructure et des applications.
 * construction d'un plan prédéfini des étapes qui vont se réaliser en parallèle avec des messages d'erreur détaillés et précis.
