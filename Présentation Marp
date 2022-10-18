@@ -63,13 +63,13 @@ _color: black
 ---
 ## 3 - Nombre de scripts
 
-J'ai choisi de réaliser un script principal pour la partie 1 du Brief 6 qui n'était pas trop longue et où tout se suivait et s'associait facilement.
-Pour la deuxième partie, j'ai réalisé plusieurs scripts afin de pouvoir tester et m'assurer que chaque manifest 
-Cela permet de  définir et d'enchaîner les étapes importantes du brief 4. Mais aussi de faciliter la lisibilité et la modification des scripts.
-* 1er script : Script jusqu'à passation de projet
-* 2ème script : Script Terraform d'Alfred avec scale set
-* 3ème script : Script Ansible d'Alfred avec scale set
+Un script principal et un script de suppression des ressources présents dans les deux parties.
 
+Plusieurs scripts pour la part 2 afin de pouvoir tester et m'assurer que chaque manifest fonctionne.
+Permet de  définir et d'enchaîner les étapes importantes du brief 6, mais aussi de faciliter la lisibilité et la modification des scripts.
+* Part 1 : un script principal
+* Part 2 : deux scripts Ingress, un script Issuer, un script principal, un script Certif, un script auto-scaling, le graph loadtester
+  
 <!--
 _backgroundColor: black
 _color: black
@@ -80,12 +80,12 @@ _color: black
 |  | *Plan projet prévu* | *Plan projet exécuté* |
 |-----------|:----------:|:------------:|
 | GR|&#9745;|&#9745;|
-| Bastion et clés SSH |&#9745;|&#9745;|
-| VMs |&#9745; |&#9745;|
-| Disque dur |&#9745;|&#9745;|
-| Gitea |&#9745;|&#9745;|
-| Backup  Vault |&#9745;|&#9745;|
-| Load Balancer |&#9745;|&#9745;| 
+| Clés SSH |&#9745;|&#9745;|
+| Images container |&#9745; |&#9745;|
+| Load Balancer |&#9745;|&#9745;|
+| ClusterIP |&#9745;|&#9745;|
+| Secret Kubernetes |&#9745;|&#9745;|
+| Storage account |&#9745;|&#9745;| 
 
 <!--
 _color: black
@@ -94,10 +94,13 @@ _color: black
 --- 
 |  | *Plan projet prévu* | *Plan projet exécuté* |
 |-----------|:----------:|:------------:|
-| MariaDB |&#9745;|&#9745;|
-| Application Insight |&#9745;|&#9745;|
+| Persistent Volume |&#9745;|&#9745;|
+| Ingress |&#9745;|&#9745;|
+| Nginx |&#9745;|&#9745;|
+| Certificat TLS |&#9745;|&#9745;|
+| DNS |&#9745;|&#9745;|
 | Script de montée en charge |&#9745;|&#9745;|
-| TLS |&#9745;|&#9744;|
+|  |&#9745;|&#9744;|
 | Documentation Terraform |&#9745;|&#9745;|
 | Méthodologie Scrum |&#9745;|&#9745;|
 
