@@ -10,12 +10,11 @@ paginate: true
 _color: black
 -->
 
-# Présentation Brief 4
-#### Déploiement automatique du service applicatif Gitea avec Terraform
-Groupe 4
-*Baptiste, Dunvael, Luna, Noa*  
+# Présentation Brief 6
+#### Déploiement automatique du service applicatif Voting App avec Kubernetes
+Dunvael 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Gitea](https://user-images.githubusercontent.com/108001918/192715095-fc639c6f-5fa1-4c9d-bf82-a52c6de8d410.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![width:700px height:300px](https://user-images.githubusercontent.com/108001918/196371502-28afc546-3750-413a-96e8-906997f36605.png)
 
 
 <!-- paginate: false -->
@@ -23,7 +22,7 @@ Groupe 4
 ---
 # SOMMAIRE  
 1 - Ressources utilisées
-2 - Choix particuliers
+2 - Topologie
 3 - Nombre de scripts
 4 - Plan projet prévu VS plan projet exécuté
 5 - Compréhension des outils et des logiciels
@@ -40,31 +39,22 @@ _color: black
 ---
 ## 1 - Ressources utilisées  
 * Documentation Microsoft Azure
-* Documentation Terraform
+* Documentation Kubernetes
 * Portail Azure pour l'interface graphique
 * Cloudshell du portail Azure
 * Moteur de recherche Google
 * Visual Studio Code
 * Github
-* *(Alfred et Bryan encore et toujours :p)*
+* *L'aide précieuse de Luna et Quentin*
 
 <!--
 _color: black
 -->
 
 ---
+## 2 - Topologie
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![width:900px height:600px](https://user-images.githubusercontent.com/108001918/192770734-76a1ceac-ad0a-447d-9c47-e738956c09d6.png)
-
-<!--
-_color: black
--->
-
----
-## 2 - Choix particuliers
-* Script en langage Terraform adapté à Azure
-* Installation de l'application Gitea
-* Utilisation d'Ubuntu 20.3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![width:500px height:500px](https://user-images.githubusercontent.com/108001918/196372669-f0cf2f50-dd24-4ff1-88b6-ed350f2249f7.png)
 
 <!--
 _color: black
@@ -72,7 +62,10 @@ _color: black
 
 ---
 ## 3 - Nombre de scripts
-Nous avons choisi de réaliser plusieurs scripts et un fichier contenant les clés SSH des administrateurs autorisés. Cela permet de  définir et d'enchaîner les étapes importantes du brief 4. Mais aussi de faciliter la lisibilité et la modification des scripts.
+
+J'ai choisi de réaliser un script principal pour la partie 1 du Brief 6 qui n'était pas trop longue et où tout se suivait et s'associait facilement.
+Pour la deuxième partie, j'ai réalisé plusieurs scripts afin de pouvoir tester et m'assurer que chaque manifest 
+Cela permet de  définir et d'enchaîner les étapes importantes du brief 4. Mais aussi de faciliter la lisibilité et la modification des scripts.
 * 1er script : Script jusqu'à passation de projet
 * 2ème script : Script Terraform d'Alfred avec scale set
 * 3ème script : Script Ansible d'Alfred avec scale set
