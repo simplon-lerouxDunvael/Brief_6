@@ -130,7 +130,8 @@ KT-temp1 <--> cluster <--> KT-temp2
 | Ingress | ✓ | ✗ | ✓ |
 | Nginx | ✓ | ✗ | ✗ |
 | DNS | ✓ | N/A | ✓ |
-| Certificat TLS | N/A | ✗ | ✓ |
+| Cert-manager | N/A | N/A | ✓ |
+| Certificat TLS | N/A | N/A | ✓ |
 | Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
 ID Subscription : 
